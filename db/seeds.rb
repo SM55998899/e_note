@@ -1,7 +1,19 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+words = [
+	{ word:"コンパイル型", mean: "プログラミング言語の方式の一つ。
+		コンパイラと呼ばれる実行ファイルにソースコードを読ませることで、
+		別の言語形態（機械語や高級言語など）に変換（翻訳）する言語方式。
+		実行はされないので実行ファイルを別途作成する必要がある。
+		「英語の本を、前もって日本語に翻訳しておく」というイメージ"},
+	{word:"インタプリタ型", mean:"プログラミング言語の方式の一つ。
+		ソースコードを読み込みながらその場で実行してくれるプログラム。
+		変換と実行が並行して行なわれるため、
+		コンパイラのように実行ファイルは作られない。
+		例えるなら、外国語のスピーチを日本語で伝えてくれる、同時通訳のようなもの"},
+	{word:"動的型付け", mean:"プログラマーがプログラムを書くときに
+		変数や関数に何が入ってくるかというのが特に決まっていないが、
+		実行時に型の決定を行うことが出来る形態。"},
+	{word:"静的型付け", mean:"変数や関数に型を予め定義しておき、
+		その型以外のデータを変数では使えないという形態。"}
+]
+
+Word.create(words)

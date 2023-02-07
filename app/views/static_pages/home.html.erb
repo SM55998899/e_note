@@ -1,0 +1,38 @@
+<header id="header">
+  <h1 class="logo">e-note</h1>
+  <nav class="navbar">
+    <ul>
+      <li><%= link_to "Home", "#" %></li>
+      <li><%= link_to "Help", "#" %></li>
+      <li><%= link_to "Log in", "#" %></li>
+      <li><%= link_to "利用規約", "#" %></li>
+    </ul>
+  </nav>
+</header>
+
+<%= render "searches/form" %>
+
+<div id="contents">
+  <section id="left">
+    <ul>
+      <li><%= link_to "単語作成", "#", class: "a1" %></li>
+      <li><%= link_to "単語閲覧", "#", class: "a2" %></li>
+      <li><%= link_to "投稿作成", "#", class: "a3" %></li>
+      <li><%= link_to "投稿閲覧", "#", class: "a4" %></li>
+    </ul>
+  </section>
+  <section id="right">
+    <ul>
+      <li><%= link_to "ログイン", "#", class: "b1" %></li>
+      <li><%= link_to "アカウント作成", "#", class: "b2" %></li>
+    </ul>
+  </section>
+</div>
+
+<footer id="footer">
+  <ul>
+    <li><%= link_to "Home", "#" %></li>
+    <li><%= link_to "Log in", "#" %></li>
+    <li><%= link_to "お問い合わせ", "#" %></li>
+  </ul>
+</footer>
