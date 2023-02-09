@@ -1,14 +1,4 @@
-<header id="header">
-  <h1 class="logo">e-note</h1>
-  <nav class="navbar">
-    <ul>
-      <li><%= link_to "Home", "#" %></li>
-      <li><%= link_to "Help", "#" %></li>
-      <li><%= link_to "Log in", "#" %></li>
-      <li><%= link_to "利用規約", "#" %></li>
-    </ul>
-  </nav>
-</header>
+
 
 <%= render "searches/form" %>
 
@@ -24,7 +14,7 @@
   <section id="right">
     <ul>
       <li><%= link_to "ログイン", "#", class: "b1" %></li>
-      <li><%= link_to "アカウント作成", "#", class: "b2" %></li>
+      <li><%= link_to "アカウント作成", signup_path, class: "b2" %></li>
     </ul>
   </section>
 </div>
