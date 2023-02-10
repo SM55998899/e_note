@@ -20,11 +20,4 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_09_052531) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
-  create_table "words", force: :cascade do |t|
-    t.string "word"
-    t.text "mean"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
 end

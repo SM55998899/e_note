@@ -1,8 +1,10 @@
 <header id="header">
-  <h1 class="logo">e-note</h1>
+  <h1 class="logo">
+  <%= link_to "e-note", root_path, {class:"main-logo"} %>
+  </h1>
   <nav class="navbar">
     <ul>
-      <li><%= link_to "Home", "#" %></li>
+      <li><%= link_to "Home", root_path %></li>
       <li><%= link_to "Help", "#" %></li>
       <li><%= link_to "Log in", "#" %></li>
       <li><%= link_to "利用規約", "#" %></li>
