@@ -22,6 +22,8 @@ gem "bootsnap",                   "1.12.0", require: false
 group :development, :test do
   gem "sqlite3", "1.4.2"
   gem "debug",   "1.5.0", platforms: %i[ mri mingw x64_mingw ]
+  gem 'guard-rspec', require: false
+  gem 'factory_bot_rails'
 end
 
 group :development do
@@ -37,6 +39,11 @@ group :test do
   gem "minitest-reporters",       "1.5.0"
   gem "guard",                    "2.18.0"
   gem "guard-minitest",           "2.4.6"
+  gem 'rspec-rails'
+  gem 'spring-commands-rspec'
+  gem 'factory_bot_rails'
+  gem 'database_cleaner'
+  gem 'launchy'
 end
 
 group :production do
