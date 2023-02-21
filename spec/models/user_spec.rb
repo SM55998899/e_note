@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Postモデルのテスト", type: :model do
+RSpec.describe "Userのテスト", type: :model do
 
 	before do
 		@user = FactoryBot.create(:user)
@@ -72,6 +72,19 @@ RSpec.describe "Postモデルのテスト", type: :model do
     @user.password = @user.password_confirmation = "a" * 5
     @user.valid?
     expect(@user.errors[:password]).to include("is too short (minimum is 6 characters)")
+  end
+
+  describe "ユーザ消去で投稿も消去" do
+    before do
+      @user.save
+      @user.microposts.create!(content: "Lorem ipsum")
+    end
+
+    it "succeeds" do
+      expect do
+        @user.destroy
+      end.to change(Micropost, :count).by(-1)
+    end
   end
 
  end

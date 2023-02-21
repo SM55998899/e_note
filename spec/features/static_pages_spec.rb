@@ -13,3 +13,10 @@ describe 'help' do
     expect(page).to have_css('a', text: 'e-note')
   end
 end
+
+describe 'diary' do 
+  specify '画面の表示' do
+    visit diary_path
+    expect(page).to have_css('a', text: 'e-note')
+  end
+end
