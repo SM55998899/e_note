@@ -1,0 +1,11 @@
+<li id="card-<%= card.id %>">
+  <span class="front"><%= card.front %></span>
+  <span class="back"><%= card.back %></span>
+  <span class="timestamp">
+     <%= time_ago_in_words(card.created_at) %> 前に作成
+     <% if current_user?(card.user) %>
+      <%= link_to "delete", card, data: { "turbo-method": :delete,
+                                               turbo_confirm: "You sure?" } %>
+    <% end %>
+  </span>
+</li>

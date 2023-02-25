@@ -1,0 +1,8 @@
+<% if @feed_items2.any? %>
+  <ol class="cards">
+    <%= render @feed_items2 %>
+  </ol>
+  <%= will_paginate @feed_items2,
+                    params: { controller: :static_pages, action: :regist } %>
+
+<% end %>

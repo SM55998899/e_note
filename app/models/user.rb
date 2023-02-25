@@ -13,4 +13,8 @@ class User < ApplicationRecord
 	def feed
 		Micropost.where("user_id = ?", id)
 	end
+
+	def feed2
+		Card.where("user_id = ?", id)
+	end
 end
