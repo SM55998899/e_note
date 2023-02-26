@@ -1,30 +1,83 @@
-# Use the latest 2.1 version of CircleCI pipeline process engine.
-# See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
-
-# Orbs are reusable packages of CircleCI configuration that you may share across projects, enabling you to create encapsulated, parameterized commands, jobs, and executors that can be used across multiple projects.
-# See: https://circleci.com/docs/2.0/orb-intro/
-orbs:
-  ruby: circleci/ruby@1.4.0
-
-# Define a job to be invoked later in a workflow.
-# See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
-  build:
+  rspec:
     docker:
-      - image: cimg/ruby:3.2.0
-    executor: ruby/default
+      - image: circleci/ruby:3.2.0-node-browsers
+        environment:
+          RAILS_ENV: test
+          DB_HOST: 127.0.0.1
+          DB_USERNAME: root
+          # DB_PASSWORD: password
+      - image: circleci/mysql:5.6
+        environment:
+          - MYSQL_DATABASE: fitness_app01_test
+          - MYSQL_USER: root
+          # - MYSQL_ROOT_PASSWORD: password
+    working_directory: ~/fitness_app01
     steps:
       - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "Gemfile.lock" }}-{{ checksum "yarn.lock" }}
+            - v1-dependencies-
       - run:
-          name: Which bundler?
-          command: bundle -v
-      - ruby/bundle-install
+          name: update bundler
+          command: |
+            gem update --system
+            gem install bundler:2.4.7
+      - run: bundle install --jobs=4 --retry=3 --path vendor/bundle
+      - save_cache:
+          key: v1-dependencies-{{ checksum "Gemfile.lock" }}-{{ checksum "yarn.lock" }}
+          paths:
+            - ./vendor/bundle
+      - run: bundle exec rails db:create RAILS_ENV=test
+      - run: bundle exec rails db:schema:load RAILS_ENV=test
+      - run:
+          name: yarn Install
+          command: yarn install
+      - run: bundle exec bin/webpack
+      - run:
+          name: RSpec
+          command: bundle exec rspec
+  rubocop:
+    docker:
+      - image: circleci/ruby:2.6.5-node-browsers
+        environment:
+          RAILS_ENV: test
+          DB_HOST: 127.0.0.1
+          DB_USERNAME: root
+          # DB_PASSWORD: password
+      - image: circleci/mysql:5.6
+        environment:
+          - MYSQL_DATABASE: fitness_app01_test
+          - MYSQL_USER: root
+          # - MYSQL_ROOT_PASSWORD: password
+    working_directory: ~/fitness_app01
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "Gemfile.lock" }}-{{ checksum "yarn.lock" }}
+            - v1-dependencies-
+      - run:
+          name: update bundler
+          command: |
+            gem update --system
+            gem install bundler:2.1.4
+      - run: bundle install --jobs=4 --retry=3 --path vendor/bundle
+      - save_cache:
+          key: v1-dependencies-{{ checksum "Gemfile.lock" }}-{{ checksum "yarn.lock" }}
+          paths:
+            - ./vendor/bundle
+      - run: bundle exec rails db:create RAILS_ENV=test
+      - run: bundle exec rails db:schema:load RAILS_ENV=test
+      - run:
+          name: RuboCop
+          command: bundle exec rubocop
 
-# Invoke jobs via workflows
-# See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
-  sample: # This is the name of the workflow, feel free to change it to better match your workflow.
-    # Inside the workflow, you define the jobs you want to run.
+  version: 2.1
+  rspec_and_rubocop_workflow:
     jobs:
-      - build
+      - rspec
+      - rubocop
