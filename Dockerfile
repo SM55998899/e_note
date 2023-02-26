@@ -1,79 +1,37 @@
-# syntax = docker/dockerfile:1
+# 公式のイメージから取得
+FROM ruby:3.0.3
 
-# Make sure RUBY_VERSION matches the Ruby version in .ruby-version and Gemfile
-ARG RUBY_VERSION=3.2.0
-FROM ruby:$RUBY_VERSION-slim as base
+# Dockerfile内部で使える変数として定義
+ARG RAILS_ENV
+ARG RAILS_MASTER_KEY
 
-LABEL fly_launch_runtime="rails"
+# コンテナ内のルートとする変数を/appと定義
+ENV APP_ROOT /app
 
-# Rails app lives here
-WORKDIR /rails
+# 環境変数化
+ENV RAILS_ENV ${RAILS_ENV}
+ENV RAILS_MASTER_KEY ${RAILS_MASTER_KEY}
 
-# Set production environment
-ENV RAILS_ENV="production" \
-    BUNDLE_PATH="vendor/bundle" \
-    BUNDLE_WITHOUT="development:test"
+# コンテナ内のルートとする。
+WORKDIR $APP_ROOT
 
-# Update gems and preinstall the desired version of bundler
-ARG BUNDLER_VERSION=2.4.3
-RUN gem update --system --no-document && \
-    gem install -N bundler -v ${BUNDLER_VERSION}
+# ローカルのGemfile, Gemfile.lockをコンテナ内のルートへコピー
+ADD Gemfile $APP_ROOT
+ADD Gemfile.lock $APP_ROOT
 
-# Install packages needed to install nodejs
-RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y curl unzip && \
-    rm -rf /var/lib/apt/lists /var/cache/apt/archives
+# bundle install実行。
+# (バージョンのエラーが出る為、一応bundler 2.0.2を指定)
+RUN \
+    gem install bundler:2.4.7 && \
+    bundle install && \
+    rm -rf ~/.gem
 
-# Install Node.js
-ARG NODE_VERSION=19.6.0
-RUN curl -fsSL https://fnm.vercel.app/install | bash && \
-    /root/.local/share/fnm/fnm install $NODE_VERSION
-ENV PATH=/root/.local/share/fnm/aliases/default/bin/:$PATH
+# バンドルインストールが終わってから他のファイルもコンテナ内へコピー
+ADD . $APP_ROOT
 
+# 本番環境の場合プロダクション
+RUN if ["${RAILS_ENV}" = "production"]; then bundle exec rails assets:precompile; else export RAILS_ENV=development; fi
 
-# Throw-away build stage to reduce size of final image
-FROM base as build
-
-# Install packages needed to build gems
-RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y build-essential libpq-dev libvips
-
-# Install application gems
-COPY Gemfile Gemfile.lock ./
-RUN bundle _${BUNDLER_VERSION}_ install && \
-    bundle exec bootsnap precompile --gemfile
-
-# Copy application code
-COPY . .
-
-# Precompile bootsnap code for faster boot times
-RUN bundle exec bootsnap precompile app/ lib/
-
-# Adjust binfiles to be executable on Linux
-RUN chmod +x bin/*
-
-# Precompiling assets for production without requiring secret RAILS_MASTER_KEY
-RUN SECRET_KEY_BASE=DUMMY ./bin/rails assets:precompile
-
-
-# Final stage for app image
-FROM base
-
-# Install packages needed for deployment
-RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y imagemagick libvips postgresql-client && \
-    rm -rf /var/lib/apt/lists /var/cache/apt/archives
-
-# Copy built application from previous stage
-COPY --from=build /rails /rails
-
-# Deployment options
-ENV RAILS_LOG_TO_STDOUT="1" \
-    RAILS_SERVE_STATIC_FILES="true"
-
-# Entrypoint prepares the database.
-ENTRYPOINT ["/rails/bin/docker-entrypoint"]
-
-# Start the server by default, this can be overwritten at runtime
+# ポート3000番を公開
 EXPOSE 3000
-CMD ["./bin/rails", "server"]
+CMD ["rails", "server", "-b", "0.0.0.0"]
