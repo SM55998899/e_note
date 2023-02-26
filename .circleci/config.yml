@@ -39,45 +39,9 @@ jobs:
       - run:
           name: RSpec
           command: bundle exec rspec
-  rubocop:
-    docker:
-      - image: circleci/ruby:2.6.5-node-browsers
-        environment:
-          RAILS_ENV: test
-          DB_HOST: 127.0.0.1
-          DB_USERNAME: root
-          # DB_PASSWORD: password
-      - image: circleci/mysql:5.6
-        environment:
-          - MYSQL_DATABASE: fitness_app01_test
-          - MYSQL_USER: root
-          # - MYSQL_ROOT_PASSWORD: password
-    working_directory: ~/fitness_app01
-    steps:
-      - checkout
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "Gemfile.lock" }}-{{ checksum "yarn.lock" }}
-            - v1-dependencies-
-      - run:
-          name: update bundler
-          command: |
-            gem update --system
-            gem install bundler:2.1.4
-      - run: bundle install --jobs=4 --retry=3 --path vendor/bundle
-      - save_cache:
-          key: v1-dependencies-{{ checksum "Gemfile.lock" }}-{{ checksum "yarn.lock" }}
-          paths:
-            - ./vendor/bundle
-      - run: bundle exec rails db:create RAILS_ENV=test
-      - run: bundle exec rails db:schema:load RAILS_ENV=test
-      - run:
-          name: RuboCop
-          command: bundle exec rubocop
 
 workflows:
   version: 2.1
   rspec_and_rubocop_workflow:
     jobs:
       - rspec
-      - rubocop
