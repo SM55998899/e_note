@@ -23,6 +23,7 @@ group :development, :test do
   gem "sqlite3", "1.4.2"
   gem "debug",   "1.5.0", platforms: %i[ mri mingw x64_mingw ]
   gem 'guard-rspec', require: false
+  gem "rspec_junit_formatter"
   gem 'factory_bot_rails'
 end
 
