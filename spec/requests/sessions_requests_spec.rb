@@ -26,4 +26,15 @@ describe "ログアウト統合テスト" do
       end
     end
   end
+
+  describe 'ログイン状態保持' do
+    it "ユーザがチェックを入れた時にクッキーが記憶されているか" do
+      log_in_as(user)
+      expect(cookies[:remember_token]).not_to eq nil
+    end
+    it "未チェック時、クッキーは未記憶か" do
+      log_in_as(user, remember_me: '0')
+      expect(cookies[:remember_token]).to eq nil
+    end
+  end
 end
