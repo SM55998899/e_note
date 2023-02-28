@@ -15,4 +15,8 @@ RSpec.describe User, type: :model do
       end.to change(Card, :count).by(-1)
     end
   end
+
+  it 'ダイジェストが存在しない場合、無効になるか' do
+    expect(user.authenticated?('')).to be_falsy
+  end
 end
