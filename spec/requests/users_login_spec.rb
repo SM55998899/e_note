@@ -13,7 +13,7 @@ context "ログインテスト" do
     fill_in 'session[email]', with: @user.email
 	fill_in 'session[password]', with: @user.password
 	click_button 'Log in'
-	expect(current_path).to eq(root_path)
+	expect(current_path).to eq '/users/1'
 	end
  end
 end
