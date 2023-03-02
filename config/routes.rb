@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :users
   resources :microposts,          only: [:create, :destroy]
   resources :cards,               only: [:create, :destroy]
+  resources :account_activations, only: [:edit]
   get '/microposts', to: 'static_pages#diary'
   get "regist", to: "static_pages#regist"
   get '/cards', to: 'static_pages#regist'
