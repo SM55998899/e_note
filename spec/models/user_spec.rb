@@ -17,6 +17,6 @@ RSpec.describe User, type: :model do
   end
 
   it 'ダイジェストが存在しない場合、無効になるか' do
-    expect(user.authenticated?('')).to be_falsy
+    expect(user.authenticated?(:remember, '')).to be_falsy
   end
 end

@@ -49,6 +49,7 @@ end
 
 group :production do
   gem "pg",         "1.3.5"
+  gem 'unicorn', "6.1.0"
   gem "aws-sdk-s3", "1.114.0", require: false
 end
 

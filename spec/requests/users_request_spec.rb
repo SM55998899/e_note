@@ -8,15 +8,15 @@ RSpec.describe "Users", type: :request do
 
     before { log_in_as(user) }
 
-	it '無効な情報を入力して編集が失敗する' do
-		patch user_path(user), params: { user: {
-		  name: " ",
-		  email: "foo@invalid",
-		  password: "foo",
-		  password_confirmation: "bar",
-		} }
-		expect(response).to have_http_status(422)
-	  end
+	  it '無効な情報を入力して編集が失敗する' do
+	  	patch user_path(user), params: { user: {
+	  	  name: " ",
+	  	  email: "foo@invalid",
+	  	  password: "foo",
+	  	  password_confirmation: "bar",
+	  	} }
+	  	expect(response).to have_http_status(422)
+	   end
 
     it '有効な情報を入力して編集が成功する' do
       patch user_path(user), params: { user: {
@@ -65,4 +65,21 @@ RSpec.describe "Users", type: :request do
       expect(response).to redirect_to root_path
     end
   end
+
+  describe "POST /users" do
+    let(:user) { FactoryBot.attributes_for(:user) }
+
+    it "adds new user with correct signup information and sends an activation email" do
+      aggregate_failures do
+        expect do
+          post users_path, params: { user: user }
+        end.to change(User, :count).by(1)
+ # ここから追加、及び修正しています。
+        expect(ActionMailer::Base.deliveries.size).to eq(1)
+        expect(response).to redirect_to root_url
+        expect(is_logged_in?).to be_falsy
+      end
+    end
+  end
+
 end
