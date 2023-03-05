@@ -9,4 +9,13 @@ module IntegrationHelpers
 											  password: password,
 											  remember_me: remember_me } }
 	end
+
+	def full_title(page_title = '')
+		base_title = "e-note"
+		if page_title.empty?
+		  base_title
+		else
+		  "#{page_title} | #{base_title}"
+		end
+	end
   end

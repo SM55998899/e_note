@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'password_resets/new'
+  get 'password_resets/edit'
   get 'sessions/new'
   get 'users/new'
   root "static_pages#home"
@@ -13,6 +15,7 @@ Rails.application.routes.draw do
   resources :microposts,          only: [:create, :destroy]
   resources :cards,               only: [:create, :destroy]
   resources :account_activations, only: [:edit]
+  resources :password_resets,     only: [:new, :create, :edit, :update]
   get '/microposts', to: 'static_pages#diary'
   get "regist", to: "static_pages#regist"
   get '/cards', to: 'static_pages#regist'
