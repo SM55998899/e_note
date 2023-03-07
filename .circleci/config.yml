@@ -1,38 +1,39 @@
-version: 2.1
-jobs:
-  rspec:
-    docker:
-      - image: ruby:3.0.3
-        environment:
-          RAILS_ENV: test
-          DB_HOST: 127.0.0.1
-          DB_USERNAME: root
-          # DB_PASSWORD: password
-    working_directory: ~/e_note
-    steps:
-      - checkout
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "Gemfile.lock" }}
-            - v1-dependencies-
-      - run:
-          name: update bundler
-          command: |
-            gem update --system
-            gem install bundler:2.4.7
-      - run: bundle install --jobs=4 --retry=3 --path vendor/bundle
-      - save_cache:
-          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
-          paths:
-            - ./vendor/bundle
-      - run: bundle exec rails db:create RAILS_ENV=test
-      - run: bundle exec rails db:schema:load RAILS_ENV=test
-      - run:
-          name: RSpec
-          command: bundle exec rspec
 
+version: 2.1
+ 
+jobs:
+    # build ジョブ: CircleCI 上で Docker コンテナを作成してテストする
+    build:
+        docker:
+            - image: alpine
+        steps:
+            - checkout
+            - run:
+                name: Echo Test
+                command: echo "CircleCI Test"
+    # deploy ジョブ: EC2 に SSH 接続して、デプロイを実行する
+    deploy:
+        machine:
+            image: circleci/classic:edge
+        steps:
+            - checkout
+            # CircleCI に登録した秘密鍵を呼び出す
+            - add_ssh_keys:
+            # CircleCI に登録した環境変数を使って SSH
+            - run: ssh ${USER_NAME}@${HOST_NAME} 'cd /var/www/e_note && git pull'
+ 
 workflows:
-  version: 2.1
-  rspec_and_rubocop_workflow:
-    jobs:
-      - rspec
+    version: 2
+    # build_and_deploy ジョブ: 一番最初に呼ばれるジョブ
+    build_and_deploy:
+        # build ジョブと deploy ジョブを登録する
+        jobs:
+            - build
+            - deploy:
+                requires:
+                    # 依存性あるから deploy ジョブより先に build ジョブを実行してね、という命令
+                    - build
+                # main ブランチに push された場合のみ deploy ジョブを実行する
+                filters:
+                    branches:
+                        only: main
