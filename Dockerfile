@@ -1,37 +1,35 @@
-# 公式のイメージから取得
-FROM ruby:3.0.3
+# 既存のプロジェクトのバージョンに合わせる
+FROM ruby:3.2.0
 
-# Dockerfile内部で使える変数として定義
-ARG RAILS_ENV
-ARG RAILS_MASTER_KEY
+# 起動させるためのパッケージを取得
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+    # `build-essential`は開発に必須のビルドツールを提供しているパッケージ
+    build-essential \
+    mariadb-client \
+    nodejs \
+    vim \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+# 作業用のディレクトリを作成(存在しない場合は勝手に作成してくれる)
+WORKDIR /e_note
 
-# コンテナ内のルートとする変数を/appと定義
-ENV APP_ROOT /app
+# ホストのGemfile達をコンテナ内にコピー
+COPY Gemfile /e_note/Gemfile
+COPY Gemfile.lock /e_note/Gemfile.lock
 
-# 環境変数化
-ENV RAILS_ENV ${RAILS_ENV}
-ENV RAILS_MASTER_KEY ${RAILS_MASTER_KEY}
+RUN gem install bundler
+RUN bundle install
+#既存railsプロジェクトをコンテナ内にコピー
+COPY . /e_note
 
-# コンテナ内のルートとする。
-WORKDIR $APP_ROOT
-
-# ローカルのGemfile, Gemfile.lockをコンテナ内のルートへコピー
-ADD Gemfile $APP_ROOT
-ADD Gemfile.lock $APP_ROOT
-
-# bundle install実行。
-# (バージョンのエラーが出る為、一応bundler 2.0.2を指定)
-RUN \
-    gem install bundler:2.4.7 && \
-    bundle install && \
-    rm -rf ~/.gem
-
-# バンドルインストールが終わってから他のファイルもコンテナ内へコピー
-ADD . $APP_ROOT
-
-# 本番環境の場合プロダクション
-RUN if ["${RAILS_ENV}" = "production"]; then bundle exec rails assets:precompile; else export RAILS_ENV=development; fi
-
-# ポート3000番を公開
+# entrypoint.shをコピーし、実行権限を与える
+COPY entrypoint.sh /usr/bin/
+# chmodコマンドはファイルやディレクトリに権限設定するコマンド。`+`は後に記述した権限を付加する。`x`は実行権限。
+# つまり今回は全てのユーザに該当ファイルの実行権限を付与する。
+RUN chmod +x /usr/bin/entrypoint.sh
+ENTRYPOINT ["entrypoint.sh"]
+# `EXPOSE <ポート>`はコンテナ実行時に<ポート>にリッスンするよう命令するコマンド。
 EXPOSE 3000
+
 CMD ["rails", "server", "-b", "0.0.0.0"]

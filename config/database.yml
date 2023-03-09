@@ -13,9 +13,10 @@ default: &default
   adapter: mysql2
   encoding: utf8mb4
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: root
-  password:
-  host: localhost
+  username: user # development.envで記載したユーザ名
+  password: <%= ENV["MYSQL_PASSWORD"] %>
+  socket: /tmp/mysql.sock
+  host: db
 
 development:
   <<: *default
@@ -47,7 +48,7 @@ test:
 #
 # Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
 # for a full overview on how database connection configuration can be specified.
-#
+
 production:
   <<: *default
   database: e_note_production
