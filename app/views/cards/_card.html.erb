@@ -1,6 +1,8 @@
 <li id="card-<%= card.id %>">
+<div id="card-form">
   <span class="front"><%= card.front %></span>
   <span class="back"><%= card.back %></span>
+</div>
   <span class="timestamp">
      <%= time_ago_in_words(card.created_at) %> 前に作成
      <% if current_user?(card.user) %>

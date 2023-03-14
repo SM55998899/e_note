@@ -1,5 +1,6 @@
 version: "3.8"
 services:
+  
   db:
     image: mysql:8.0.32
     # データの永続化の為に使用
@@ -8,6 +9,18 @@ services:
     # Mac(M1)を使用している場合、platformに関するエラーが発生する可能性がある。エラー発生してから追加するのも良し。
     platform: linux/x86_64
     env_file: development.env
+
+  test-db:
+    image: mysql:8.0.32
+
+    volumes:
+      - dbvolume:/opt/homebrew/bin/mysql/data2
+    environment:
+      MYSQL_DATABASE: docker_test
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_USER: test_user
+      MYSQL_PASSWORD: passw0rd
+    platform: linux/x86_64
   web:
     # 作成済みのDockerfileを元にコンテナを作成
     build:
@@ -23,11 +36,17 @@ services:
     # コンテナの立ち上げ順と依存関係を指定。dbコンテナが立ち上がってからwebコンテナが立ち上がるようにする。
     depends_on:
       - db
+      - test-db
     env_file: development.env
     # stdin_open, ttyは`pry-byebug`を使用するために記述
     stdin_open: true
     tty: true
     command: bundle exec rails server -b 0.0.0.0
+    environment: #以下追記
+    - "SELENIUM_DRIVER_URL=http://selenium_chrome:4444/wd/hub"
+
+  selenium_chrome:
+    image: selenium/standalone-chrome-debug # 追記
 volumes:
   dbvolume:
   gem_data:

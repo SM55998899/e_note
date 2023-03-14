@@ -22,6 +22,7 @@ gem "bootsnap",                   "1.12.0", require: false
 group :development, :test do
   gem "mysql2"
   gem "debug",   "1.5.0", platforms: %i[ mri mingw x64_mingw ]
+  gem "rspec-rails"
   gem 'guard-rspec', require: false
   gem "rspec_junit_formatter"
   gem 'factory_bot_rails'
@@ -29,17 +30,19 @@ end
 
 group :development do
   gem "web-console", "4.2.0"
+  gem 'rubocop', require: false
+  gem 'rubocop-rails', require: false
 end
 
 group :test do
   gem "capybara",                 "3.37.1"
   gem "selenium-webdriver",       "4.2.0"
-  gem "webdrivers",               "5.0.0"
   gem "rails-controller-testing", "1.0.5"
   gem "minitest",                 "5.15.0"
   gem "minitest-reporters",       "1.5.0"
   gem "guard",                    "2.18.0"
   gem "guard-minitest",           "2.4.6"
+  gem "webdrivers"
   gem 'rspec-rails'
   gem 'spring-commands-rspec'
   gem 'factory_bot_rails'
