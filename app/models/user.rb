@@ -55,6 +55,11 @@ class User < ApplicationRecord
     BCrypt::Password.new(digest).is_password?(token)
   end
 
+  #ユーザーが投稿に対して、すでにいいねをしているのかどうかを判定する
+  def already_liked?(card)
+    self.likes.exists?(card_id: card.id)
+  end
+
   # ユーザーのログイン情報を破棄する
   def forget
     update_attribute(:remember_digest, nil)
