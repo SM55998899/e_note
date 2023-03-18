@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_17_120850) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_04_235522) do
   create_table "cards", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "front"
     t.text "back"
@@ -19,13 +19,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_17_120850) do
     t.datetime "updated_at", null: false
     t.index ["user_id", "created_at"], name: "index_cards_on_user_id_and_created_at"
     t.index ["user_id"], name: "index_cards_on_user_id"
-  end
-
-  create_table "likes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "card_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "microposts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -53,5 +46,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_17_120850) do
   end
 
   add_foreign_key "cards", "users"
+  add_foreign_key "likes", "cards"
+  add_foreign_key "likes", "users"
   add_foreign_key "microposts", "users"
 end

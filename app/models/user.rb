@@ -5,6 +5,7 @@ class User < ApplicationRecord
 	has_many :microposts, dependent: :destroy
 	has_many :cards, dependent: :destroy
   has_many :likes, dependent: :destroy
+  has_many :liked_cards, through: :likes, source: :card
 	before_save { self.email = email.downcase }
 	validates :name, presence: true, length: { maximum: 50 }
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
@@ -52,6 +53,11 @@ class User < ApplicationRecord
     digest = send("#{attribute}_digest")
     return false if digest.nil?
     BCrypt::Password.new(digest).is_password?(token)
+  end
+
+  #ユーザーが投稿に対して、すでにいいねをしているのかどうかを判定する
+  def already_liked?(card)
+    self.likes.exists?(card_id: card.id)
   end
 
   # ユーザーのログイン情報を破棄する
