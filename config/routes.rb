@@ -21,4 +21,6 @@ Rails.application.routes.draw do
   get '/microposts', to: 'static_pages#diary'
   get "regist", to: "static_pages#regist"
   get '/cards', to: 'static_pages#regist'
+  get '/todolist', to: "todo#list"
+  resources :list, only: %i(new create edit update destroy)
 end
