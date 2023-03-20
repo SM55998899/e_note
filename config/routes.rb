@@ -23,6 +23,6 @@ Rails.application.routes.draw do
   get '/cards', to: 'static_pages#regist'
   get '/todolist', to: "todo#list"
   resources :list, only: %i(new create edit update destroy) do
-    resources :tip, only: %i(new create show edit update)
+    resources :tip, except: %i(index)
   end
 end

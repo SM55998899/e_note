@@ -1,4 +1,4 @@
-<div class="row">
+<% if @tip.present? %>
   <div>タイトル</div>
   <h2><%= @tip.title %></h2>
   <div>メモ</div>
@@ -6,4 +6,13 @@
   <div>リスト名</div>
   <div><%= @tip.list.title %></div>
   <%= link_to "編集する", edit_list_tip_path(@tip.list, @tip), class: "edit_btn" %>
-</div>
+  <%= link_to "削除をする",
+  list_tip_path,
+  data: {
+    "turbo-method": :delete,
+    turbo_confirm: "You sure?"
+  } %>
+<% else %>
+  <h2>現在、カードはありません。</h2>
+  <%= link_to "リスト一覧", todolist_path %>
+<% end %>

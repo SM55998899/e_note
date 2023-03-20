@@ -1,5 +1,10 @@
-.col-md-4 {
-	float: left;
+#card-contents {
+	margin-left: 150px;
+	display: flex;
+
+	.feedcard {
+		margin-left: 100px;
+	}
 }
 
 .btn {

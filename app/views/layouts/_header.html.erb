@@ -4,11 +4,10 @@
   </h1>
   <% if logged_in? %>
     <ul id="login-header" class="login-header">
-      <li><%= link_to "Profile", current_user %></li>
-      <li><%= link_to "Settings", edit_user_path(current_user) %></li>
-      <li class="divider"></li>
+      <li><%= link_to "プロフィール", current_user %></li>
+      <li><%= link_to "アカウント情報変更", edit_user_path(current_user) %></li>
       <li>
-        <%= link_to "Log out", logout_path, data: { "turbo-method": :delete } %>
+        <%= link_to "ログアウト", logout_path, data: { "turbo-method": :delete } %>
       </li>
     </ul>
   <% else %>

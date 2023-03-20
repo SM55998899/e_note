@@ -8,10 +8,19 @@
     </ul>
   </section>
   <section id="right">
-    <ul>
-      <li><%= link_to "ログイン", login_path, class: "b1" %></li>
-      <li><%= link_to "アカウント作成", signup_path, class: "b2" %></li>
-    </ul>
+    <% if logged_in? %>
+      <div class="login-right">
+        <ul>
+          <li><%= gravatar_for @user %></li>
+          <li><h2>ようこそ、<%= @user.name %>さん</h2></li>
+        </ul>
+      </div>
+    <% else %>
+      <ul>
+        <li><%= link_to "ログイン", login_path, class: "b1" %></li>
+        <li><%= link_to "アカウント作成", signup_path, class: "b2" %></li>
+      </ul>
+    <% end %>
   </section>
 </div>
 
