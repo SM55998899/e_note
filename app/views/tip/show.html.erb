@@ -1,0 +1,9 @@
+<div class="row">
+  <div>タイトル</div>
+  <h2><%= @tip.title %></h2>
+  <div>メモ</div>
+  <div><%= @tip.memo %></div>
+  <div>リスト名</div>
+  <div><%= @tip.list.title %></div>
+  <%= link_to "編集する", edit_list_tip_path(@tip.list, @tip), class: "edit_btn" %>
+</div>

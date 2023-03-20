@@ -14,5 +14,18 @@
         } %>
       </div>
     </div>
+
+    <% list.tips.each do |tip| %>
+      <%= link_to list_tip_path(list, tip), class:"cardDetail_link" do %>
+        <div class="tip">
+          <h3 class="tip_title"><%= tip.title %></h3>
+          <% if tip.memo.size > 0 %>
+            <div class="tip_detail"><i class="fas fa-bars">#</i></div>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+
+    <%= link_to "さらにカードを追加", new_list_tip_path(list), class: "addCard_link" %>
   <% end %>
 </div>
