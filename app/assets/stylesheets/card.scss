@@ -1,11 +1,66 @@
 #card-contents {
 	margin-left: 150px;
-	display: flex;
+
+
+	.makecard {
+		border: 1px solid black;
+		padding: 0 15px;
+		float: left;
+	}
 
 	.feedcard {
-		margin-left: 100px;
+		margin-left: 25px;
+		border: 1px solid black;
+		padding: 0 15px;
+		float: right;
+
+		#card-feed {
+			border: 1px solid black;
+			margin-top: 4px;
+			display: block;
+		}
+
+		.cc {
+			width: 350px;
+			padding: 5px;
+			font-size: 1.15rem;
+			border-bottom: 1px solid black;
+		}
+
+		.timestamp {
+			font-size: 0.7rem;
+			margin-top: 7px;
+			float: left;
+		}
+
+		.cc-sub {
+			display: flex;
+			justify-content: flex-end;
+			padding: 4px;
+			margin-right: 7px;
+
+
+			.dg {
+				display: flex;
+
+				.good {
+					margin-right: 30px;
+				}
+
+
+				.delete {}
+			}
+		}
+
+
+	}
+
+	.cards {
+		padding: 0;
 	}
 }
+
+
 
 .btn {
 	font-size: 18px;

@@ -3,9 +3,7 @@
 }
 
 #contents {
-
 	display: flex;
-
 }
 
 #left {
@@ -82,6 +80,23 @@
 					background-color: white;
 					color: rgb(43, 202, 162);
 				}
+			}
+		}
+	}
+
+	.login-right {
+		padding-top: 40px;
+
+		ul {
+			li {
+				.gravatar {
+					border-radius: 10px;
+				}
+
+				color: white;
+
+				margin-top: 0px;
+				display: block;
 			}
 		}
 	}
