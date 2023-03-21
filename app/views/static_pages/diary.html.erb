@@ -1,14 +1,14 @@
 <% if logged_in? %>
-  <div class="diarytext">
-    <h1>日記をつける</h1>
-    <h3>未来の自分へできること</h3>
-  </div>
+
   <div class="d-contents">
     <section class="diary-form">
+    <h1>日記をつける</h1>
+    <h3>未来の自分へできること</h3>
       <%= render "shared/micropost_form" %>
     </section>
 
     <div class="diary-feed">
+      <h2>日記一覧</h2>
       <%= render "shared/feed" %>
     </div>
   </div>
