@@ -1,0 +1,33 @@
+.diarytext {
+	display: flex;
+
+	h1 {
+		margin: 0;
+	}
+
+	h3 {
+		margin: 0;
+	}
+
+}
+
+.d-contents {
+
+
+	.diary-form {
+		border: solid 1px black;
+		padding: 10px;
+		float: left;
+	}
+
+	.diary-feed {
+		width: 500px;
+		margin-left: 560px;
+		border: solid 1px black;
+	}
+
+	.d-feed-p {
+		border: solid 1px black;
+		padding: 3px;
+	}
+}
