@@ -4,12 +4,12 @@
     <p class="text-danger">タイトルは1～255文字以内で入力してください</p>
   <% end %>
   <div class="tipnewForm_title">
-    <%= f.label :title %>
-    <%= f.text_field :title, autofocus: true, class: "form-control", placeholder: "カード名" %>
+    <%= f.label :"カード名" %>
+    <%= f.text_field :title, autofocus: true, class: "tipform", placeholder: "カード名" %>
   </div>
   <div class="tipnewForm_memo">
-    <%= f.label :memo %>
-    <%= f.text_area :memo, autofocus: true, class: "form-control", placeholder: "詳細" %>
+    <%= f.label :"メモ" %>
+    <%= f.text_area :memo, autofocus: true, class: "tipform", placeholder: "詳細" %>
     <div class="text-center"><%= f.submit "作成する", class: "submitBtn" %></div>
   </div>
 <% end %>

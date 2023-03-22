@@ -2,13 +2,14 @@
   <% if @tip.errors.any? %>
     <p class="text-danger">タイトルは1～255文字以内で入力してください</p>
   <% end %>
+  <h2>カード情報の変更</h2>
   <div class="tipeditForm_title">
-    <%= f.label :title %>
-    <%= f.text_field :title, class: "form-control", placeholder: "カード名" %>
+    <%= f.label :"カード名" %>
+    <%= f.text_field :title, class: "tipform", placeholder: "カード名" %>
   </div>
   <div class="tipeditForm_memo">
-    <%= f.label :memo %>
-    <%= f.text_area :memo, class: "form-control", placeholder: "詳細" %>
+    <%= f.label :"メモ" %>
+    <%= f.text_area :memo, class: "tipform", placeholder: "詳細" %>
   </div>
 
   <div class="tipeditform">

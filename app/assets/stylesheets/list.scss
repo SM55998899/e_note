@@ -1,0 +1,32 @@
+.new_list,
+.listShow,
+.listForm {
+	font-family: sans-serif;
+	font-weight: bold;
+	border: solid 1px black;
+	border-radius: 7px;
+	width: 350px;
+	padding: 10px;
+	color: white;
+	background-color: #2bcaa2;
+
+	.listname {
+		font-size: 1.3rem;
+	}
+
+	.listname-form {
+		border-radius: 6px;
+		font-size: 1.15rem;
+	}
+
+	h2,
+	h3 {
+		margin: 0 0 10px 0;
+	}
+
+	h1 {
+		margin: 0 0 15px 0;
+		padding-bottom: 15px;
+		border-bottom: solid 2px white;
+	}
+}

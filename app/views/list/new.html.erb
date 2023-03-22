@@ -1,9 +1,9 @@
 <%= form_with model: @list, url: { action: :create }, class: "new_list", local: true do |f| %>
   <%= render "shared/error_messages", object: f.object %>
-  <%= f.label :title %>
+  <%= f.label :"リスト名", class: "listname" %>
   <%= f.text_field :title,
                autofocus: true,
-               class: "form-control listName",
-               placeholder: "リスト名" %>
+               class: "listname-form",
+               placeholder: "リスト名を入力" %>
   <div class="text-center"><%= f.submit "作成", class: "submitBtn" %></div>
 <% end %>
