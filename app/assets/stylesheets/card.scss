@@ -47,6 +47,7 @@
 		.timestamp {
 			font-size: 0.7rem;
 			margin-top: 7px;
+			margin-left: 9px;
 			float: left;
 		}
 
@@ -62,10 +63,51 @@
 
 				.good {
 					margin-right: 30px;
+					fill: #2bcaa2;
+
+					.button_to-btn {
+						background-color: #fff;
+						/* ボタンの背景色 */
+						border: none;
+						/* ボタンの枠線 */
+						box-shadow: none;
+						/* ボタンの影 */
+						color: #000;
+						/* ボタンの文字色 */
+						text-shadow: none;
+						/* ボタンの文字の影 */
+						width: 35px;
+						height: 35px;
+
+
+						.bk {
+							border: none;
+							margin: 0;
+						}
+					}
 				}
 
 
-				.delete {}
+				.delete {
+					background-color: #fff;
+					/* ボタンの背景色 */
+					border: none;
+					/* ボタンの枠線 */
+					box-shadow: none;
+					/* ボタンの影 */
+					color: #000;
+					/* ボタンの文字色 */
+					text-shadow: none;
+					/* ボタンの文字の影 */
+					width: 17px;
+					height: 17px;
+					margin-top: 7px;
+
+					.bk {
+						border: none;
+						margin: 0;
+					}
+				}
 			}
 		}
 

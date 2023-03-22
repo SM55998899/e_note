@@ -13,7 +13,5 @@
     </div>
   </div>
 <% else %>
-  この機能を使うにはアカウントが必要です。<br>
-  <%= link_to "ログイン", login_path %><br>
-  <%= link_to "アカウント作成", signup_path %>
+  <%= render "shared/urge" %>
 <% end %>

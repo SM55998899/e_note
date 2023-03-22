@@ -1,7 +1,7 @@
 <% provide(:title, "Edit user") %>
-<h1>Update your profile</h1>
+<div class="pe-contents">
+  <h1>プロフィールを編集する</h1>
 
-<div class="col-md-6 col-md-offset-3">
   <%= form_with(model: @user) do |f| %>
     <%= render "shared/error_messages", object: f.object %>
 
@@ -17,11 +17,11 @@
     <%= f.label :password_confirmation, "Confirmation" %>
     <%= f.password_field :password_confirmation, class: "form-control" %>
 
-    <%= f.submit "Save changes", class: "btn btn-primary" %>
+    <%= f.submit "プロフィール変更", class: "btn btn-primary" %>
   <% end %>
 
   <div class="gravatar_edit">
     <%= gravatar_for @user %>
-    <a href="https://gravatar.com/emails" target="_blank">change</a>
+    <a href="https://gravatar.com/emails" target="_blank">プロフィール画像を変える</a>
   </div>
 </div>
