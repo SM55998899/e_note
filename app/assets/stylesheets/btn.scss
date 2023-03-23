@@ -1,0 +1,11 @@
+.btn {
+	border: solid 1px white;
+	border-radius: 6px;
+	color: #2bcaa2;
+	background-color: white;
+
+	&:hover {
+		background-color: #2bcaa2;
+		color: white;
+	}
+}

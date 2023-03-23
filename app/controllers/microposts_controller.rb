@@ -9,7 +9,7 @@ class MicropostsController < ApplicationController
 		redirect_to diary_path
 	  else
 		@feed_items = current_user.feed.paginate(page: params[:page])
-		render 'static_pages/home', status: :unprocessable_entity
+		redirect_to request.referrer, status: :see_other
 	  end
 	end
   

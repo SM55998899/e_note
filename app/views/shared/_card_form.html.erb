@@ -1,17 +1,20 @@
 <div id="card-form">
   <%= form_with(model: @card) do |f| %>
-    <%= render "shared/error_messages", object: f.object %>
     <div class="front">
       <%= f.text_area :front,
+                  required: true,
                   placeholder: "単語を入力...",
                   size: "35x4",
-                  style: "font-size: 16px;" %>
+                  style: "font-size: 16px;  border-radius: 5px; font-weight: bold;" %>
     </div>
     <div class="back">
       <%= f.text_area :back,
+                  required: true,
                   placeholder: "単語の意味を入力...",
                   size: "35x10",
-                  style: "font-size: 16px;" %>
+                  style: "font-size: 16px;
+                          border-radius: 5px;
+                          font-weight: bold;" %>
     </div>
     <%= f.submit "単語を作成", class: "btn btn-primary" %>
   <% end %>

@@ -4,6 +4,7 @@
   <%= f.text_field :title,
                autofocus: true,
                class: "listname-form",
-               placeholder: "リスト名を入力" %>
-  <div class="text-center"><%= f.submit "作成", class: "submitBtn" %></div>
+               placeholder: "リスト名を入力",
+               required: true %>
+  <div class="text-center"><%= f.submit "作成", class: "btn" %></div>
 <% end %>

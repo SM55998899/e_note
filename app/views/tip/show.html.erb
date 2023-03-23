@@ -1,25 +1,25 @@
 <div class="listShow">
-<h1>このカードの情報</h1>
-<% if @tip.present? %>
-  <h2>タイトル</h2>
-  <h3>&emsp;<%= @tip.title %></h3>
-  <h2>メモ</h2>
-  <% if @tip.memo.present? %>
-    <h2>&emsp;<%= @tip.memo %></h2>
+  <h1>このカードの情報</h1>
+  <% if @tip.present? %>
+    <h2>タイトル</h2>
+    <h3>&emsp;<%= @tip.title %></h3>
+    <h2>メモ</h2>
+    <% if @tip.memo.present? %>
+      <h2>&emsp;<%= @tip.memo %></h2>
+    <% else %>
+      <h3>&emsp;なし</h3>
+    <% end %>
+    <h2>リスト名</h2>
+    <h3>&emsp;<%= @tip.list.title %></h3>
+    <%= link_to "編集する", edit_list_tip_path(@tip.list, @tip), class: "edit_btn" %>
+    <%= link_to "削除をする",
+    list_tip_path,
+    data: {
+      "turbo-method": :delete,
+      turbo_confirm: "You sure?"
+    } %>
   <% else %>
-    <h3>&emsp;なし</h3>
+    <h2>現在、カードはありません。</h2>
+    <%= link_to "リスト一覧", todolist_path %>
   <% end %>
-  <h2>リスト名</h2>
-  <h3>&emsp;<%= @tip.list.title %></h3>
-  <%= link_to "編集する", edit_list_tip_path(@tip.list, @tip), class: "edit_btn" %>
-  <%= link_to "削除をする",
-  list_tip_path,
-  data: {
-    "turbo-method": :delete,
-    turbo_confirm: "You sure?"
-  } %>
-<% else %>
-  <h2>現在、カードはありません。</h2>
-  <%= link_to "リスト一覧", todolist_path %>
-<% end %>
 </div>
