@@ -1,19 +1,22 @@
 <div class="d-feed-p">
-  <li id="micropost-<%= micropost.id %>">
-    <span class="content"><%= micropost.content %></span>
-    <div class="d-feed-dt">
-      <span class="timestamp">
-        作成日&nbsp;<%= micropost.created_at.strftime("%Y/%m/%d %H:%M") %>
-      </span>
-      <% if current_user?(micropost.user) %>
-        <%= link_to "削除",
-        micropost,
-        class: "delete",
-        data: {
-          "turbo-method": :delete,
-          turbo_confirm: "You sure?"
-        } %><% end %>
-    </div>
-
-  </li>
+  <div id="micropost-<%= micropost.id %>">
+    <%= link_to(micropost_path(micropost), class: "d-feed-a") do %>
+      <span class="content"><%= truncate(strip_tags(micropost.content), length: 60) %></span>
+      <div class="d-feed-dt">
+        <span class="timestamp">
+          作成日&nbsp;<%= micropost.created_at.strftime("%Y/%m/%d %H:%M") %>
+        </span>
+        <% if current_user?(micropost.user) %>
+          <%= link_to micropost,
+          class: "delete",
+          data: {
+            "turbo-method": :delete,
+            turbo_confirm: "この日記を削除してよろしいですか？"
+          }  do %>
+            <%= image_tag("trash.png", alt: "削除する", class: "list-icon trash") %>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 </div>

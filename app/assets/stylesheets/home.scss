@@ -2,58 +2,62 @@
 	background-color: rgb(43, 202, 162);
 }
 
-#contents {
-	display: flex;
-}
+#contents {}
 
 #left {
-	font-size: 1.8rem;
 	font-weight: bold;
 	font-family: sans-serif;
-	padding-top: 30px;
-	padding-right: 60px;
-	padding-bottom: 170px;
+	padding: 30px 20px;
 	background-color: rgb(43, 202, 162);
 	border-radius: 10px;
+	float: left;
+	display: flex;
 
-	ul {
-		display: flex;
+	.ah {
+		margin: 7px;
 
-		li {
-			margin-left: 20px;
-
-			a {
-				color: white;
-				border-radius: 20px;
-
-				&:hover {
-					background-color: rgb(186, 186, 186);
-					opacity: 0.85;
-				}
-			}
-
-			.a1 {
-				padding: 20px 20px 150px 20px;
-				background-color: rgb(52, 99, 255);
-			}
-
-			.a2 {
-				padding: 20px 20px 150px 20px;
-				background-color: rgb(73, 156, 251);
-			}
-
-			.a3 {
-				padding: 20px 20px 150px 20px;
-				background-color: rgb(255, 50, 115);
-			}
-
-			.a4 {
-				padding: 20px 20px 150px 20px;
-				background-color: rgb(250, 100, 232);
-			}
+		&:hover {
+			background-color: rgba(255, 255, 255, 0.439);
 		}
 	}
 }
+
+.a1,
+.a2,
+.a3,
+.a4 {
+	background-color: rgb(88, 88, 255);
+	border-radius: 10px;
+	text-align: center;
+	padding: 10px;
+
+	h2 {
+		margin: 0;
+		color: white;
+		font-size: 2.3rem;
+	}
+
+	.aa1 {
+		margin-top: 10px;
+		width: 80px;
+		height: 80px;
+		border: none;
+	}
+}
+
+.a2 {
+	background-color: rgb(62, 152, 255);
+}
+
+.a3 {
+	background-color: rgb(255, 35, 35);
+}
+
+.a4 {
+	background-color: rgb(255, 91, 222);
+}
+
+
 
 #right {
 	display: block;
@@ -63,7 +67,7 @@
 	font-family: sans-serif;
 	padding-right: 40px;
 	background-color: rgb(43, 202, 162);
-	margin-left: 50px;
+	margin-left: 700px;
 	border-radius: 10px;
 
 	ul {
@@ -85,20 +89,24 @@
 	}
 
 	.login-right {
-		padding-top: 40px;
+		padding: 20px 0px 20px 20px;
+		text-align: left;
+		font-size: 1.1rem;
+		display: flex;
+		margin: 0;
 
-		ul {
-			li {
-				.gravatar {
-					border-radius: 10px;
-				}
-
-				color: white;
-
-				margin-top: 0px;
-				display: block;
-			}
+		.gravatar {
+			border-radius: 10px;
+			float: left;
+			border: solid 3px white;
 		}
+
+		h4 {
+			margin: 0 0 0 20px;
+		}
+
+		color: white;
+		margin-top: 0px;
 	}
 }
 

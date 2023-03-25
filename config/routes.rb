@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   delete "/logout",  to: "sessions#destroy"
   get "/diary", to: "static_pages#diary"
   resources :users
-  resources :microposts,          only: [:create, :destroy]
+  resources :microposts,          only: %i(create destroy show)
   resources :cards,               only: [:create, :destroy] do
     resources :likes, only: [:create, :destroy]
   end
@@ -25,4 +25,5 @@ Rails.application.routes.draw do
   resources :list, only: %i(new create edit update destroy) do
     resources :tip, except: %i(index)
   end
+  resources :contacts, only: [:new, :create]
 end

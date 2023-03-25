@@ -1,19 +1,30 @@
 <div id="contents">
   <section id="left">
-    <ul>
-      <li><%= link_to "単語帳", regist_path, class: "a1" %></li>
-      <li><%= link_to "予定表", todolist_path, class: "a2" %></li>
-      <li><%= link_to "日記帳", diary_path, class: "a3" %></li>
-      <li><%= link_to "投稿閲覧", "#", class: "a4" %></li>
-    </ul>
+    <%= link_to regist_path, class: "a1 ah" do %>
+      <h2>単語帳</h2>
+      <%= image_submit_tag("book-white.png", class: "aa1") %>
+    <% end %>
+    
+    <%= link_to todolist_path, class: "a2 ah" do%>
+      <h2>予定表</h2>
+      <%= image_submit_tag("todo-white.png", class: "aa1") %>
+    <% end %>
+
+    <%= link_to diary_path, class: "a3 ah" do %>
+    <h2>日記帳</h2>
+    <%= image_submit_tag("diary-white.png", class: "aa1") %>
+    <% end %>
+
+    <%= link_to "#", class: "a4 ah" do %>
+    <h2>投稿閲覧</h2>
+    <%= image_submit_tag("search-white.png", class: "aa1") %>
+    <% end %>
   </section>
   <section id="right">
     <% if logged_in? %>
       <div class="login-right">
-        <ul>
-          <li><%= gravatar_for @user %></li>
-          <li><h4>ようこそ、<%= @user.name %>さん</h4></li>
-        </ul>
+        <%= gravatar_for @user %>
+        <h4>ようこそ、<%= @user.name %>さん</h4>
       </div>
     <% else %>
       <ul>
@@ -28,6 +39,8 @@
   <ul>
     <li><%= link_to "Home", "#" %></li>
     <li><%= link_to "Log in", "#" %></li>
-    <li><%= link_to "お問い合わせ", "#" %></li>
+    <li><%= link_to new_contact_path( user_id: current_user.id ) do %>
+    お問い合わせ
+    <% end %></li>
   </ul>
 </footer>

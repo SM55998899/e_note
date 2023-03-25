@@ -16,7 +16,7 @@
             <%= link_to list,
             data: {
               "turbo-method": :delete,
-              turbo_confirm: "本当に削除してよろしいですか？"
+              turbo_confirm: "この「リスト」を削除しますが本当によろしいですか？"
             } do %>
               <%= image_tag("trash.png", alt: "削除する", class: "list-icon trash") %>
             <% end %>

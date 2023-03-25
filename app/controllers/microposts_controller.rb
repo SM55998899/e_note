@@ -1,5 +1,5 @@
 class MicropostsController < ApplicationController
-	before_action :logged_in_user, only: [:create, :destroy]
+	before_action :logged_in_user, only: %i(create destroy)
   before_action :correct_user,   only: :destroy
 
 	def create
@@ -21,6 +21,10 @@ class MicropostsController < ApplicationController
 		else
 		  redirect_to request.referrer, status: :see_other
 		end
+	end
+
+	def show
+		@micropost = Micropost.find_by(id: params[:id])
 	end
   
 	private

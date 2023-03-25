@@ -1,5 +1,17 @@
 <% provide(:title, @user.name) %>
-<h1>
-  <%= gravatar_for @user %>
-  <%= @user.name %>
-</h1>
+<div class="user">
+  <h1>ユーザープロフィール</h1>
+  <div class="userContents">
+    <div class="gUser">
+      <%= gravatar_for @user %>
+    </div>
+    <div class="userInfo">
+      <h2>
+        名前&ensp;:&ensp;<%= @user.name %>
+      </h2>
+      <h2>
+        登録日&ensp;:&ensp;<%= @user.created_at.to_s(:datetime_jp) %>
+      </h2>
+    </div>
+  </div>
+</div>

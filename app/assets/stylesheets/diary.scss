@@ -24,7 +24,6 @@
 
 
 .diary-form {
-	border: solid 1px black;
 	border-radius: 7px;
 	padding: 10px;
 	float: left;
@@ -39,8 +38,8 @@
 
 .diary-feed {
 	width: 500px;
+	padding: 5px;
 	margin-left: 560px;
-	border: solid 1px black;
 	border-radius: 7px;
 	color: white;
 	background-color: #2bcaa2;
@@ -51,20 +50,37 @@
 	}
 }
 
+.d-feed-a {
+	width: 100%;
+	color: rgb(71, 71, 71);
+}
+
 .d-feed-p {
-	border: solid 1px black;
 	margin-bottom: 7px;
 	border-radius: 7px;
 	padding: 3px;
 	background-color: white;
 	color: black;
+	box-shadow: 0 3px 0 rgba(0, 0, 0, 0.3);
+
+	&:hover {
+		background-color: rgb(222, 222, 222);
+	}
 
 	.content {
 		display: block;
+		padding: 5px;
 		border-bottom: solid 1px black;
+
+		p {
+			margin: 0;
+		}
+
 	}
 
 	.timestamp {
+		position: absolute;
+		right: 380px;
 		font-size: 0.8rem;
 		margin-top: 4px;
 		margin-right: 70px;
@@ -72,11 +88,56 @@
 
 	.d-feed-dt {
 		display: flex;
-		justify-content: flex-end;
+		height: 25px;
 		margin-right: 5px;
+
+		.delete {
+			position: absolute;
+			right: 140px;
+			transform: translateY(3px);
+
+			.list-icon {
+				width: 17px;
+				height: 20px;
+				padding: 0;
+				opacity: 0.6;
+
+				&:hover {
+					opacity: 0.3;
+				}
+
+
+			}
+		}
 	}
 }
 
 .microposts {
 	padding: 5px;
+}
+
+.diary-p {
+	background-color: #2bcaa2;
+	width: 900px;
+	margin-left: 90px;
+	padding: 5px;
+	border-radius: 7px;
+
+	h1 {
+		font-family: sans-serif;
+		margin: 10px 30px 0px 30px;
+		padding-bottom: 20px;
+		color: white;
+		border-bottom: solid 2px white;
+	}
+
+	.diary-c {
+		background-color: white;
+		color: rgb(73, 73, 73);
+		padding: 1px 7px;
+		margin: 30px 30px;
+		border-radius: 7px;
+		font-family: sans-serif;
+		font-weight: bold;
+	}
 }

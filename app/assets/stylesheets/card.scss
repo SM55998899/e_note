@@ -3,7 +3,6 @@
 
 
 	.makecard {
-		border: 1px solid black;
 		border-radius: 8px;
 		background-color: #2bcaa2;
 		padding: 0 15px;
@@ -19,7 +18,6 @@
 	.feedcard {
 		margin-left: 25px;
 		border-radius: 8px;
-		border: 1px solid black;
 		background-color: #2bcaa2;
 		padding: 0 15px;
 		float: right;
@@ -30,18 +28,19 @@
 		}
 
 		#card-feed {
-			border: 1px solid black;
 			background-color: white;
 			border-radius: 8px;
 			margin-top: 4px;
 			display: block;
+			box-shadow: 0 3px 0 rgba(0, 0, 0, 0.3);
 		}
 
 		.cc {
 			width: 350px;
 			padding: 5px;
 			font-size: 1.15rem;
-			border-bottom: 1px solid black;
+			border-bottom: solid 2px #2bcaa2;
+			font-weight: bold;
 		}
 
 		.timestamp {
