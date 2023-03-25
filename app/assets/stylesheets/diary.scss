@@ -79,8 +79,9 @@
 	}
 
 	.timestamp {
-		position: absolute;
-		right: 380px;
+		position: relative;
+		top: 3px;
+		left: 10px;
 		font-size: 0.8rem;
 		margin-top: 4px;
 		margin-right: 70px;
@@ -92,8 +93,8 @@
 		margin-right: 5px;
 
 		.delete {
-			position: absolute;
-			right: 140px;
+			position: relative;
+			right: 14px;
 			transform: translateY(3px);
 
 			.list-icon {

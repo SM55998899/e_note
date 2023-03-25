@@ -2,15 +2,18 @@
 	background-color: rgb(43, 202, 162);
 }
 
-#contents {}
+#contents {
+	display: flex;
+	flex-direction: column-reverse;
+}
 
 #left {
 	font-weight: bold;
 	font-family: sans-serif;
 	padding: 30px 20px;
+	margin-left: 80px;
 	background-color: rgb(43, 202, 162);
 	border-radius: 10px;
-	float: left;
 	display: flex;
 
 	.ah {
@@ -34,7 +37,7 @@
 	h2 {
 		margin: 0;
 		color: white;
-		font-size: 2.3rem;
+		font-size: 2.0rem;
 	}
 
 	.aa1 {
@@ -42,6 +45,7 @@
 		width: 80px;
 		height: 80px;
 		border: none;
+		margin-bottom: 0;
 	}
 }
 
@@ -55,28 +59,46 @@
 
 .a4 {
 	background-color: rgb(255, 91, 222);
+
+	.aa1 {
+		margin-top: 15px;
+	}
 }
 
 
 
 #right {
+	width: 400px;
 	display: block;
-	text-align: center;
 	font-size: 1.6rem;
 	font-weight: bold;
 	font-family: sans-serif;
-	padding-right: 40px;
+	padding: 0;
 	background-color: rgb(43, 202, 162);
-	margin-left: 700px;
+	margin-left: 80px;
+	margin-bottom: 20px;
 	border-radius: 10px;
 
+	h5 {
+		color: white;
+		margin: 10px 0 0 30px;
+		font-size: 1.1rem;
+		display: inline-block;
+	}
+
 	ul {
+		display: flex;
+		margin: 5px 0 0 0;
+		padding-left: 25px;
+
 		li {
-			margin-top: 75px;
+			padding: 5px;
+			margin-bottom: 15px;
+			margin-right: 5px;
 
 			a {
-				padding: 30px;
-				border-radius: 15px;
+				padding: 4px 8px;
+				border-radius: 7px;
 				border: solid 1px white;
 				color: white;
 
@@ -89,13 +111,16 @@
 	}
 
 	.login-right {
-		padding: 20px 0px 20px 20px;
+		padding: 20px 0px 20px 30px;
+		height: 150px;
 		text-align: left;
 		font-size: 1.1rem;
 		display: flex;
 		margin: 0;
 
 		.gravatar {
+			width: 80px;
+			height: 80px;
 			border-radius: 10px;
 			float: left;
 			border: solid 3px white;
@@ -116,6 +141,8 @@
 	font-family: sans-serif;
 	padding: 15px;
 	position: absolute;
+	flex-wrap: nowrap;
+	overflow-x: auto;
 	bottom: 0;
 	left: 0;
 	right: 0;
@@ -126,6 +153,8 @@
 
 		li {
 			margin-left: 25px;
+			flex: 0 0 auto;
+			white-space: nowrap;
 
 			a {
 				color: white;

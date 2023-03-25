@@ -3,6 +3,8 @@ header {
 	background-color: rgb(43, 202, 162);
 	display: flex;
 	position: absolute;
+	flex-wrap: nowrap;
+	overflow-x: auto;
 	top: 0;
 	left: 0;
 
@@ -11,6 +13,7 @@ header {
 	}
 
 	.logo {
+		white-space: nowrap;
 		color: white;
 		margin-left: 130px;
 		margin-right: 550px
@@ -41,12 +44,17 @@ header {
 
 	.login-header {
 		line-height: 50px;
+		flex-wrap: nowrap;
+		overflow-x: auto;
+		display: flex;
 
 		li {
 			font-family: sans-serif;
 			font-weight: bold;
-			float: left;
 			margin-left: 10px;
+			flex: 0 0 auto;
+			white-space: nowrap;
+			transition: transform 0.3s ease-in-out;
 
 			a {
 				font-size: 1.25rem;

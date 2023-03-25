@@ -16,7 +16,7 @@
     <% end %>
 
     <%= link_to "#", class: "a4 ah" do %>
-    <h2>投稿閲覧</h2>
+    <h2>調べる</h2>
     <%= image_submit_tag("search-white.png", class: "aa1") %>
     <% end %>
   </section>
@@ -27,6 +27,7 @@
         <h4>ようこそ、<%= @user.name %>さん</h4>
       </div>
     <% else %>
+    <h5>e-noteのご利用にはアカウントが必要です</h5>
       <ul>
         <li><%= link_to "ログイン", login_path, class: "b1" %></li>
         <li><%= link_to "アカウント作成", signup_path, class: "b2" %></li>
@@ -39,8 +40,10 @@
   <ul>
     <li><%= link_to "Home", "#" %></li>
     <li><%= link_to "Log in", "#" %></li>
+    <% if logged_in?%>
     <li><%= link_to new_contact_path( user_id: current_user.id ) do %>
     お問い合わせ
     <% end %></li>
+    <% end %>
   </ul>
 </footer>
