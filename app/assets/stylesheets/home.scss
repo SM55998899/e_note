@@ -126,8 +126,15 @@
 			border: solid 3px white;
 		}
 
-		h4 {
-			margin: 0 0 0 20px;
+		.text {
+			margin-left: 18px;
+			padding: 0px 10px;
+			border-radius: 5px;
+
+			h4 {
+				color: white;
+				margin: 0px 0 13px 0px;
+			}
 		}
 
 		color: white;

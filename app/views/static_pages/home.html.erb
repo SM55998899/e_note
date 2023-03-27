@@ -4,30 +4,43 @@
       <h2>単語帳</h2>
       <%= image_submit_tag("book-white.png", class: "aa1") %>
     <% end %>
-    
-    <%= link_to todolist_path, class: "a2 ah" do%>
+
+    <%= link_to todolist_path, class: "a2 ah" do %>
       <h2>予定表</h2>
       <%= image_submit_tag("todo-white.png", class: "aa1") %>
     <% end %>
 
     <%= link_to diary_path, class: "a3 ah" do %>
-    <h2>日記帳</h2>
-    <%= image_submit_tag("diary-white.png", class: "aa1") %>
+      <h2>日記帳</h2>
+      <%= image_submit_tag("diary-white.png", class: "aa1") %>
     <% end %>
 
     <%= link_to "#", class: "a4 ah" do %>
-    <h2>調べる</h2>
-    <%= image_submit_tag("search-white.png", class: "aa1") %>
+      <h2>調べる</h2>
+      <%= image_submit_tag("search-white.png", class: "aa1") %>
     <% end %>
   </section>
   <section id="right">
     <% if logged_in? %>
       <div class="login-right">
         <%= gravatar_for @user %>
-        <h4>ようこそ、<%= @user.name %>さん</h4>
+        <div class="text">
+          <h4>ようこそ、<%= @user.name %>さん</h4>
+          <h4>登録した単語 :
+            <%= @user.cards.length %>個</h4>
+          <h4>書いた日記 :
+            <%= @user.microposts.length %>件</h4>
+          <h4>予定 :
+            <% if @user.lists.present? %>
+              あり
+            <% else %>
+              なし
+            <% end %>
+          </h4>
+        </div>
       </div>
     <% else %>
-    <h5>e-noteのご利用にはアカウントが必要です</h5>
+      <h5>e-noteのご利用にはアカウントが必要です</h5>
       <ul>
         <li><%= link_to "ログイン", login_path, class: "b1" %></li>
         <li><%= link_to "アカウント作成", signup_path, class: "b2" %></li>
@@ -40,10 +53,10 @@
   <ul>
     <li><%= link_to "Home", "#" %></li>
     <li><%= link_to "Log in", "#" %></li>
-    <% if logged_in?%>
-    <li><%= link_to new_contact_path( user_id: current_user.id ) do %>
-    お問い合わせ
-    <% end %></li>
+    <% if logged_in? %>
+      <li><%= link_to new_contact_path( user_id: current_user.id ) do %>
+          お問い合わせ
+        <% end %></li>
     <% end %>
   </ul>
 </footer>
