@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get "/diary", to: "static_pages#diary"
   resources :users
   resources :microposts,          only: %i(create destroy show)
-  resources :cards,               only: [:create, :destroy] do
+  resources :cards,               only: %i(create destroy index) do
     resources :likes, only: [:create, :destroy]
   end
   resources :account_activations, only: [:edit]

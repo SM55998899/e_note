@@ -23,6 +23,10 @@ class CardsController < ApplicationController
     end
   end
 
+  def index
+    @cards = Card.all
+  end
+
   private
 
     def card_params
