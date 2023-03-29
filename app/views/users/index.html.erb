@@ -1,0 +1,14 @@
+<ul>
+  <% @cards.each do |c| %>
+    <li id="c-<%= c.id %>">
+      <%= c.front %>
+      <%= c.back %>
+    </li>
+  <% end %>
+  <%= will_paginate @cards,
+  params: {
+    controller: :users,
+    action: :index
+  },
+  class: "my-pagination-class" %>
+</ul>

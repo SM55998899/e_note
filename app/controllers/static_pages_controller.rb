@@ -18,7 +18,7 @@ class StaticPagesController < ApplicationController
   def regist
     if logged_in?
       @card  = current_user.cards.build
-      @feed_items2 = current_user.feed2.paginate(page: params[:page])
+      @feed_items2 = current_user.feed2.paginate(page: params[:page], per_page: 6)
     end
   end
 end
