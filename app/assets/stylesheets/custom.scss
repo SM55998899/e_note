@@ -6,6 +6,10 @@ li {
 	list-style: none;
 }
 
+body {
+	margin: 0;
+}
+
 @mixin base {
 	background-color: rgb(43, 202, 162);
 }
@@ -76,7 +80,7 @@ select,
 }
 
 .row {
-	margin: 80px 0px 0 100px;
+	margin: 24px 0px 0 100px;
 	display: inline-block;
 
 	.btn-primary {

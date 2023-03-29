@@ -4,13 +4,22 @@
   </h1>
   <% if logged_in? %>
     <ul id="login-header" class="login-header">
+      <li><%= link_to "ホーム", root_path %></li>
       <li><%= link_to "ヒント", help_path %></li>
-      <li><%= link_to "プロフィール", current_user %></li>
-      <li><%= link_to "アカウント情報変更", edit_user_path(current_user) %></li>
-      <li>
-        <%= link_to "ログアウト", logout_path, data: { "turbo-method": :delete } %>
-      </li>
     </ul>
+    <div class="single">
+      <a href="#">ユーザー</a>
+      <ul class="menu-second">
+        <li><%= link_to "プロフィール", current_user %></li>
+        <li><%= link_to "ユーザー編集", edit_user_path(current_user) %></li>
+        <li><%= link_to "ログアウト",
+          logout_path,
+          data: {
+            "turbo-method": :delete,
+            turbo_confirm: "ログアウトしますが、よろしいですか？"
+          } %></li>
+      </ul>
+    </div>
   <% else %>
     <nav class="navbar">
       <ul>
@@ -22,3 +31,7 @@
     </nav>
   <% end %>
 </header>
+
+<% if logged_in? %>
+
+<% end %>

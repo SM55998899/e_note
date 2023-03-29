@@ -3,11 +3,9 @@ header {
 	background-color: rgb(43, 202, 162);
 	height: 65px;
 	display: flex;
-	position: absolute;
+	overflow: visible;
 	flex-wrap: nowrap;
-	overflow-x: auto;
-	top: 0;
-	left: 0;
+
 
 	.main-logo {
 		color: white;
@@ -24,12 +22,13 @@ header {
 
 	.navbar {
 		font-family: sans-serif;
-		margin-top: 13px;
+		margin-top: 17px;
+		height: 30px;
 		font-weight: bold;
 
 		ul {
 			display: flex;
-			line-height: 50px;
+			margin: 0;
 
 			a {
 				color: white;
@@ -66,4 +65,48 @@ header {
 			}
 		}
 	}
+
+	.single {
+		position: relative;
+		text-align: center;
+		height: 30px;
+		display: block;
+		margin: 20px 0 0 20px;
+		padding: 0 0 8px 0;
+		z-index: 2;
+
+		a {
+			font-size: 1.1rem;
+			color: white;
+			font-family: sans-serif;
+			font-weight: bold;
+		}
+
+		.menu-second {
+			a {
+				color: #2bcaa2;
+			}
+
+			li {
+				margin: 10px 0px;
+			}
+
+			padding: 0;
+			border: solid 2px #2bcaa2;
+			border-radius: 7px;
+			visibility: hidden;
+			width: 150px;
+			background-color: white;
+			position: absolute;
+			top: 20px;
+			left: -30px;
+			box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+		}
+	}
+
+	.single:hover .menu-second {
+		visibility: visible;
+	}
+
+
 }
