@@ -66,6 +66,28 @@
 		width: 200px;
 		float: left;
 
+		.tip {
+			background-color: white;
+			border-radius: 5px;
+
+			margin-bottom: 8px;
+			justify-content: center;
+			box-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
+
+			&:hover {
+				background-color: rgba(90, 90, 90, 0.378);
+			}
+
+			.tip-title {
+				margin: 0;
+				border-bottom: solid 1px rgb(164, 164, 164);
+			}
+
+			.btn {
+				display: inline-block;
+			}
+		}
+
 		.list_header {
 			margin-bottom: 7px;
 		}
@@ -88,22 +110,7 @@
 			font-size: 0.9rem;
 			font-family: sans-serif;
 
-			.tip {
-				background-color: white;
-				border-radius: 5px;
-				display: flex;
-				margin-bottom: 8px;
-				justify-content: center;
-				box-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
 
-				&:hover {
-					background-color: rgba(90, 90, 90, 0.378);
-				}
-
-				.tip-title {
-					margin: 0;
-				}
-			}
 		}
 
 		.plus {

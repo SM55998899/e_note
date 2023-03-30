@@ -8,7 +8,10 @@
       </section>
     </div>
     <div class="feedcard">
-      <h3>作成した単語</h3>
+      <div class="fc-head">
+        <h3>作成した単語</h3>
+        <%= link_to "マーク単語一覧", card_likes_path(:card_id), class: "fc-likes" %>
+      </div>
       <%= render "shared/feed2" %>
     </div>
   </div>

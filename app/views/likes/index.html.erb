@@ -1,0 +1,10 @@
+<div class="likeIndex">
+<h1>マークした単語一覧</h1>
+<h2>重点的に覚えよう！</h2>
+  <% @like_list.each do |l| %>
+    <div class="card">
+      <%= l.front %>
+      <%= l.back %>
+    </div>
+  <% end %>
+</div>

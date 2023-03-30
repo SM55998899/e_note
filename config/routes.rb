@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   resources :users
   resources :microposts,          only: %i(create destroy show)
   resources :cards,               only: %i(create destroy) do
-    resources :likes, only: [:create, :destroy]
+    resources :likes, only: %i(create destroy index)
   end
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   get '/cards', to: 'static_pages#regist'
   get '/todolist', to: "todo#list"
   resources :list, only: %i(new create edit update destroy) do
-    resources :tip, except: %i(index)
+    resources :tip, except: %i(index show)
   end
   resources :contacts, only: [:new, :create]
 end

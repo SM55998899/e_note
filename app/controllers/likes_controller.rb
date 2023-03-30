@@ -9,4 +9,12 @@ class LikesController < ApplicationController
     @like.destroy
     redirect_back(fallback_location: root_path)
   end
+
+  def index
+    @user = current_user
+    @cards = @user.cards
+
+    likes = Like.where(user_id: current_user.id).pluck(:card_id)
+    @like_list = Card.find(likes)
+  end
 end

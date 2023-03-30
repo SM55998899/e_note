@@ -14,11 +14,7 @@ class TipController < ApplicationController
       render action: :new
     end
   end
-
-	def show
-
-  end
-
+  
 	def edit
     @lists = List.where(user: current_user)
   end

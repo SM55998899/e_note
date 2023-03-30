@@ -22,6 +22,25 @@
 		padding: 0 15px;
 		float: right;
 
+		.fc-head {
+			display: flex;
+			height: 46px;
+
+			.fc-likes {
+				color: white;
+				font-size: 1.2rem;
+				font-family: sans-serif;
+				font-weight: bold;
+				height: 10px;
+				margin-top: 18px;
+				margin-left: 100px;
+
+				&:hover {
+					opacity: 0.7;
+				}
+			}
+		}
+
 		h3 {
 			font-family: sans-serif;
 			color: white;
@@ -121,4 +140,13 @@
 .btn {
 	font-size: 18px;
 	font-weight: bold;
+}
+
+.likeIndex {
+	background: #2bcaa2;
+	border-radius: 6px;
+
+	.card {
+		display: flex;
+	}
 }

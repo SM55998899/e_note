@@ -16,19 +16,23 @@
             <%= link_to list,
             data: {
               "turbo-method": :delete,
-              turbo_confirm: "この「リスト」を削除しますが本当によろしいですか？"
+              turbo_confirm: "この「リスト」を削除しますが本当によろしいですか？                  (中にあるカードも消えます)"
             } do %>
               <%= image_tag("trash.png", alt: "削除する", class: "list-icon trash") %>
             <% end %>
           </div>
 
           <% list.tips.each do |tip| %>
-            <%= link_to list_tip_path(list, tip), class:"cardDetail_link" do %>
+            <%= link_to edit_list_tip_path(list, tip), class:"cardDetail_link" do %>
               <div class="tip">
                 <h3 class="tip-title"><%= tip.title %></h3>
-                <% if tip.memo.size > 0 %>
-                  <div class="tip_detail">（メモあり）</div>
-                <% end %>
+                <%= link_to "削除",
+                list_tip_path(list, tip),
+                class: "btn delete",
+                data: {
+                  "turbo-method": :delete,
+                  turbo_confirm: "このカードを削除しますが、よろしいでしょうか？"
+                } %>
               </div>
             <% end %>
           <% end %>
