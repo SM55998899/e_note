@@ -1,12 +1,8 @@
 <%= form_with(model: @contact, local: true) do |f| %>
   <div class="c-content">
-    <div class='form-wrap'>
-      <div class='form-header'>
-        <h5>
-          お問い合わせフォーム
-        </h5>
-      </div>
-    </div>
+    <h2>
+      お問い合わせフォーム
+    </h2>
     <div class="correct-msg-box">
       <% if @contact.errors.any? %>
         <div id="error_explanation">
@@ -24,21 +20,24 @@
           </div>
           <div class="correct-text-field">
             <%= f.label "お問合せ内容" %>
-            <%= f.text_area :content, placeholder: "お問合せ内容を入力してください", class: "input-form", size: "50x10" %>
+            <%= f.text_area :content,
+                        placeholder: "お問合せ内容を入力してください",
+                        class: "input-form",
+                        size: "50x10" %>
           </div>
+          <p>３営業日以内に返信いたします。</p>
+          <p>また、お問い合わせ頂いた内容によっては、返信いたしかねる場合がございますのでご了承ください。</p>
+
           <div class="send-btn-contents">
             <div class="register-btn">
-              <%= f.button type: "submit", class:"register-red-btn", style:'border-style: none;' do %>
-                送信
-                <i class="fas fa-paper-plane"></i>
-              <% end %>
+              <%= link_to "もどる", root_path, class: "btn root" %>
             </div>
             <div class="register-btn">
-              <%= link_to "もどる",
-              root_path,
-              class: "register-red-btn",
-              style: "background-color: #aaa" %>
+              <%= f.button type: "submit", class:"btn c-btn" do %>
+                送信
+              <% end %>
             </div>
+
           </div>
         </div>
       </div>

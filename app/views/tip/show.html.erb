@@ -13,10 +13,10 @@
     <h3>&emsp;<%= @tip.list.title %></h3>
     <%= link_to "編集する", edit_list_tip_path(@tip.list, @tip), class: "edit_btn" %>
     <%= link_to "削除をする",
-    list_tip_path,
+    list_tip_path(@tip.list, @tip),
     data: {
       "turbo-method": :delete,
-      turbo_confirm: "You sure?"
+      turbo_confirm: "このカードを削除しますが、よろしいでしょうか？"
     } %>
   <% else %>
     <h2>現在、カードはありません。</h2>

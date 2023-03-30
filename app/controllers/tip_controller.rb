@@ -16,6 +16,7 @@ class TipController < ApplicationController
   end
 
 	def show
+
   end
 
 	def edit
