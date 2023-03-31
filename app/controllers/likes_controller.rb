@@ -15,6 +15,6 @@ class LikesController < ApplicationController
     @cards = @user.cards
 
     likes = Like.where(user_id: current_user.id).pluck(:card_id)
-    @like_list = Card.find(likes)
+    @like_list = Card.where(id: likes).paginate(page: params[:page], per_page: 27)
   end
 end

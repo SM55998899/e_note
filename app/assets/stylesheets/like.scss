@@ -1,0 +1,58 @@
+@mixin bcAndFont1 {
+	background: #2bcaa2;
+	border-radius: 6px;
+	color: white;
+	font-family: sans-serif;
+	font-weight: bold;
+	padding: 7px;
+}
+
+@mixin bcAndFont2 {
+	background: white;
+	border-radius: 7px;
+	padding: 3px;
+}
+
+.likeIndex {
+	@include bcAndFont1;
+	width: 1000px;
+
+	.text {
+		display: flex;
+		width: 950px;
+		margin-left: 25px;
+		margin-top: 10px;
+		padding-bottom: 10px;
+		border-bottom: solid 2px white;
+
+		h1 {
+			margin: 0 0 0 20px;
+		}
+
+		h2 {
+			font-size: 1.1rem;
+			margin-left: 9px;
+		}
+	}
+
+	.card1 {
+		display: flex;
+		flex-flow: column wrap;
+		width: 300px;
+		height: 350px;
+		margin-left: 20px;
+		padding-top: 20px;
+
+		.card2 {
+			@include bcAndFont2;
+			color: gray;
+			width: 300px;
+			margin-right: 20px;
+			margin-top: 3px;
+		}
+	}
+
+	.my-pagination-class .pagination {
+		margin-left: 20px;
+	}
+}
