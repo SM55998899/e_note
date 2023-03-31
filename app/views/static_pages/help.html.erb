@@ -1,2 +1,46 @@
-<h1>StaticPages#help</h1>
-<p>Find me in app/views/static_pages/help.html.erb</p>
+<div class="helpContents">
+  <h1>e-noteへようこそ！</h1>
+  <h3>e-noteは全ての勉強する人に向けて作られた記憶定着アプリです！</h3>
+  <h1>使い方</h1>
+  <div class="howto card">
+    <div class="text">
+      <h1>①単語を覚える</h1>
+      <h3>自分で単語を登録し、どんどん覚えていきましょう！
+        <br>忘れがちな単語は★ボタンを押して「マーク単語一覧」でまとめて覚えましょう！</h3>
+    </div>
+    <%= image_tag "help1.png", class: "helpImage hi1" %>
+  </div>
+
+  <div class="howto todo">
+    <div class="text">
+      <h1>②予定を立てる</h1>
+      <h3>メリハリのある行動は記憶の定着に繋がります！
+        <br>予定を立ててみましょう！</h3>
+    </div>
+    <%= image_tag "help2.png", class: "helpImage hi2" %>
+  </div>
+
+  <div class="howto diary">
+    <div class="text">
+      <h1>③日記をつける</h1>
+      <h3>今日の学習はどうでしたか？
+        <br>1日を振り返って明日に備えましょう！</h3>
+    </div>
+    <%= image_tag "help3.png", class: "helpImage hi3" %>
+  </div>
+  <div class="start">
+    <% if logged_in? %>
+      <%= link_to root_path, class:"start2 login" do %>
+        <h1>さあ、始めよう</h1>
+      <% end %>
+    <% else %>
+		<h1>アカウントを用意して始めよう</h1>
+      <%= link_to login_path, class: "start2 nologin" do %>
+			<h1>ログイン</h1>
+			<% end %>
+      <%= link_to signup_path, class: "start2 signin" do %>
+			<h1>アカウント作成</h1>
+			<% end %>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,45 @@
+.helpContents {
+	margin-left: 80px;
+
+	.helpImage {
+		border-radius: 7px;
+		margin-left: 100px;
+		width: 500px;
+		height: 400px;
+		box-shadow: 0 2px 2px rgb(37, 37, 37);
+	}
+
+	.howto {
+		margin-bottom: 30px;
+		display: flex;
+
+		.text {
+			width: 400px;
+
+
+		}
+	}
+
+	.start {
+
+		.start2 {
+			display: inline-block;
+			color: #2bcaa2;
+			border: solid 1px #2bcaa2;
+			border-radius: 7px;
+			margin: 0 0 20px 0;
+			transition: 0.05s;
+
+			h1 {
+				margin: 0;
+				padding: 5px;
+			}
+
+			&:hover {
+				color: white;
+				background: #2bcaa2;
+			}
+		}
+	}
+
+}

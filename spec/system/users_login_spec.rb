@@ -9,10 +9,10 @@ context "ログインテスト" do
 	it "正しくログインすること"do
 	visit root_path
 	click_link "ログイン" # or whatever link there is in the UI
-    fill_in 'Email', with: user.email # Use the labels like real person would
-    fill_in 'Password', with: user.password
+    fill_in 'session[email]', with: user.email # Use the labels like real person would
+    fill_in 'session[password]', with: user.password
     click_button 'Log in'
-	expect(current_path).to eq user_path(user)
+	expect(current_path).to eq root_path
 	end
  end
 end

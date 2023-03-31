@@ -1,6 +1,6 @@
 <div class="likeIndex">
   <div class="text">
-    <h1>マークした単語一覧</h1>
+    <h1>★&nbsp;マークした単語一覧&nbsp;★</h1>
     <h2>重点的に覚えよう！</h2>
   </div>
   <div class="card1">
@@ -12,9 +12,9 @@
     <% end %>
   </div>
   <%= will_paginate @like_list,
-    class: "my-pagination-class",
-    params: {
-      controller: :likes,
-      action: :index
-    } %>
+  class: "my-pagination-class",
+  params: {
+    controller: :likes,
+    action: :index
+  } %>
 </div>

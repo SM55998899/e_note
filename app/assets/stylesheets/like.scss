@@ -45,10 +45,12 @@
 
 		.card2 {
 			@include bcAndFont2;
-			color: gray;
+			color: black;
+			font-family: serif;
 			width: 300px;
 			margin-right: 20px;
 			margin-top: 3px;
+			box-shadow: 0 2px 2px rgb(75, 75, 75);
 		}
 	}
 

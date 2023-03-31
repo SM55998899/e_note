@@ -1,0 +1,41 @@
+.pe-contents {
+	font-family: sans-serif;
+	font-weight: bold;
+	margin-left: 300px;
+	border-radius: 7px;
+	width: 450px;
+	padding: 10px;
+	color: white;
+	background-color: #2bcaa2;
+
+	.form-control {
+		font-size: 1.3rem;
+		color: rgb(103, 103, 103);
+		font-weight: bold;
+		border-radius: 7px;
+	}
+
+
+	.gravatar_edit {
+		display: flex;
+
+		a {
+			margin: 10px 0 0 10px;
+			color: #2bcaa2;
+			background: white;
+			height: 48px;
+			border: solid 1px white;
+			border-radius: 7px;
+
+			&:hover {
+				color: white;
+				background: #2bcaa2;
+			}
+		}
+
+		.gravatar {
+			border-radius: 7px;
+			border: solid 2px white;
+		}
+	}
+}

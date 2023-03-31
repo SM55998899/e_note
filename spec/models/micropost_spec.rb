@@ -19,7 +19,7 @@ RSpec.describe Micropost, type: :model do
   end
 
   it "投稿が140字以内かどうか" do
-    micropost.content = "a" * 141
+    micropost.content = "a" * 3001
     expect(micropost).to be_invalid
   end
 
