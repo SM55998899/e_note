@@ -30,15 +30,15 @@ RSpec.describe "todo機能", type: :request do
 
 	describe "list, tip削除について" do
 		let(:user) { FactoryBot.create(:user) }
-		let(:list) { FactoryBot.create(:list, user: user) }
+		let!(:list) { FactoryBot.create(:list, user: user) }
 
-		#context "ログイン時" do
-		#	it "作ったlistを削除できる" do
-		#		log_in_as(user)
-		#		  expect {
-		#				delete list_path(list[:id])
-		#			}.to change(List, :count).by(-1)
-		#	end
-		#end
+		context "ログイン時" do
+			it "作ったlistを削除できる" do
+				log_in_as(user)
+				expect {
+					delete list_path(list)
+				}.to change(List, :count).by(-1)
+			end
+		end
 	end
 end

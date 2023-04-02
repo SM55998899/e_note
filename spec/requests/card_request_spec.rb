@@ -21,15 +21,15 @@ RSpec.describe "単語機能", type: :request do
 		end
 
 		describe "単語削除時" do
-			let!(:card) { FactoryBot.create(:card) }
-			let(:delete_request) { delete card_path(card) }
+			let!(:card) { FactoryBot.create(:card, user: user) }
+			let!(:delete_request) { delete card_path(card) }
 
 			context "ログイン時" do
 				it "作った単語を削除すると減る" do
 					log_in_as(user)
 				  expect {
 						delete card_path(card)
-					}.to change(Card, :count).by(0)
+					}.to change(Card, :count).by(-1)
 				end
 			end
 	
