@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe "Microposts", type: :request do
-  describe "投稿作成時" do
+RSpec.describe "日記機能", type: :request do
+  describe "日記作成時" do
     let(:micropost) { FactoryBot.attributes_for(:micropost) }
     let(:post_request) { post microposts_path, params: { micropost: micropost } }
 
@@ -16,7 +16,7 @@ RSpec.describe "Microposts", type: :request do
     end
   end
 
-  describe "投稿削除時" do
+  describe "日記削除時" do
     let!(:micropost) { FactoryBot.create(:micropost) }
     let(:delete_request) { delete micropost_path(micropost) }
 

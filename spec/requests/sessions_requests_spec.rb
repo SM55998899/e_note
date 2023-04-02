@@ -38,9 +38,9 @@ describe "ログアウト統合テスト" do
     end
   end
 
-  describe "friendly forwarding" do
+  describe "フレンドリーフォワーディングについて" do
     let(:user) { FactoryBot.create(:user) }
-    it 'succeeds' do
+    it '成功する' do
       get edit_user_path(user)
       log_in_as(user)
       expect(response).to redirect_to edit_user_url(user)

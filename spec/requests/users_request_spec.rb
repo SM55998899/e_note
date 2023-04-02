@@ -69,12 +69,11 @@ RSpec.describe "Users", type: :request do
   describe "POST /users" do
     let(:user) { FactoryBot.attributes_for(:user) }
 
-    it "adds new user with correct signup information and sends an activation email" do
+    it "正しくアカウント作成して有効化のメールが送られるか" do
       aggregate_failures do
         expect do
           post users_path, params: { user: user }
         end.to change(User, :count).by(1)
- # ここから追加、及び修正しています。
         expect(ActionMailer::Base.deliveries.size).to eq(1)
         expect(response).to redirect_to root_url
         expect(is_logged_in?).to be_falsy

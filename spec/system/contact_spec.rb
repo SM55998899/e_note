@@ -14,15 +14,17 @@ RSpec.describe "問い合わせ", type: :system do
     click_button 'ログインする'
 	end
 
-	context "統合テスト" do
-    it "問い合わせ可能かどうか" do
-    # ログイン後に問い合わせページにアクセスする
-		visit root_path
-		click_link "お問い合わせ"
-		expect(page).to have_current_path(new_contact_path(user_id: user.id))
-    fill_in 'お名前', with: contact.name
-		fill_in 'お問合せ内容を入力してください', with: contact.content
-		click_button '送信'
-	end
-end
+	describe do
+	  context "統合テスト" do
+      it "問い合わせ可能かどうか" do
+        # ログイン後に問い合わせページにアクセスする
+	  	  visit root_path
+	  	  click_link "お問い合わせ"
+	  	  expect(page).to have_current_path(new_contact_path(user_id: user.id))
+        fill_in 'お名前', with: contact.name
+	  	  fill_in 'お問合せ内容を入力してください', with: contact.content
+	  	  click_button '送信'
+	    end
+   end
+  end
 end
