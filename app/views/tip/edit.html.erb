@@ -5,7 +5,7 @@
   <h2>カード情報の変更</h2>
   <div class="tipeditForm_title">
     <%= f.label :"カード名" %>
-    <%= f.text_field :title, class: "tipform", placeholder: "カード名" %>
+    <%= f.text_field :title, required: true, class: "tipform", placeholder: "カード名" %>
   </div>
   <div class="tipeditForm_memo">
     <%= f.label :"メモ" %>

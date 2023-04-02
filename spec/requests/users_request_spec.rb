@@ -3,7 +3,7 @@ require 'rails_helper'
 
 RSpec.describe "Users", type: :request do
 
-  describe "PATCH /users/:id" do
+  describe "ログイン時のユーザー編集" do
     let(:user) { FactoryBot.create(:user) }
 
     before { log_in_as(user) }
@@ -29,10 +29,10 @@ RSpec.describe "Users", type: :request do
     end
   end
 
-  describe "before_action: :logged_in_user" do
+  describe "非ログイン時のユーザー編集" do
     let(:user) { FactoryBot.create(:user) }
 
-    it '非ログインユーザが編集しようとしたらログインページに飛ばされるか' do
+    it '非ログインユーザが編集ページに行こうとしたらログインページに飛ばされるか' do
       get edit_user_path(user)
       expect(response).to redirect_to login_path
     end
@@ -46,13 +46,13 @@ RSpec.describe "Users", type: :request do
     end
   end
 
-  describe "before_action: :correct_user" do
+  describe "ログイン時の他ユーザーへの編集" do
     let(:user) { FactoryBot.create(:user) }
     let(:other_user) { FactoryBot.create(:user) }
 
     before { log_in_as(other_user) }
 	
-    it 'ログインして他のユーザを編集しようとした時、失敗するか' do
+    it 'ログインして他のユーザを編集ページに行こうとした時、失敗するか' do
       get edit_user_path(user)
       expect(response).to redirect_to root_path
     end
@@ -66,7 +66,7 @@ RSpec.describe "Users", type: :request do
     end
   end
 
-  describe "POST /users" do
+  describe "有効化メール" do
     let(:user) { FactoryBot.attributes_for(:user) }
 
     it "正しくアカウント作成して有効化のメールが送られるか" do

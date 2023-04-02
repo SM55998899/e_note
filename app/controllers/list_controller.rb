@@ -1,5 +1,7 @@
 class ListController < ApplicationController
-  before_action :set_list, only: %i(edit update destroy)
+  before_action :logged_in_user, only: %i[new create edit update destroy]
+  before_action :correct_user, only: %i[edit update destroy]
+  before_action :set_list, only: %i[edit update destroy]
 
 	def new
     @list = List.new
@@ -12,7 +14,7 @@ class ListController < ApplicationController
     else
       render action: :new
     end
-  end
+ end
 
   def edit
   end
@@ -21,7 +23,7 @@ class ListController < ApplicationController
     if @list.update(list_params)
       redirect_to todolist_path
     else
-      render action: :edit
+      render action: :edit, status: :unprocessable_entity
     end
   end
 
@@ -31,7 +33,8 @@ class ListController < ApplicationController
     redirect_to todolist_path
   end
 
-	private
+	 private
+
 	def list_params
 		params.require(:list).permit(:title).merge(user: current_user)
 	end
@@ -39,4 +42,19 @@ class ListController < ApplicationController
   def set_list
     @list = List.find_by(id: params[:id])
   end
+
+  # ログイン済みユーザーかどうか確認
+  def logged_in_user
+    unless logged_in?
+      store_location
+      flash[:danger] = "Please log in."
+      redirect_to login_url, status: :see_other
+    end
+  end
+
+  # 正しいユーザーかどうかを確認
+	def correct_user
+    @list = List.find_by(id: params[:id])
+		redirect_to(root_url, status: :see_other) unless current_user?(@list.user)
+	end
 end

@@ -5,8 +5,6 @@ RSpec.describe "Sessions", type: :request do
 
 describe "ログアウト統合テスト" do
     it 'ホーム画面へリダイレクトされる' do
-# 前章で「post login_path」の箇所はbeforeを使用して書いていましたが、
-# 今回のテストを書くにあたり、以下の箇所に移動させました。
       post login_path, params: { session: {
         email: user.email,
         password: user.password,
@@ -17,7 +15,7 @@ describe "ログアウト統合テスト" do
         expect(is_logged_in?).to be_falsy
       end
     end
-# 今回のテストはここからです。
+
     it '二つのタブでログアウトする場合' do
       delete logout_path
       aggregate_failures do
@@ -25,9 +23,9 @@ describe "ログアウト統合テスト" do
         expect(is_logged_in?).to be_falsy
       end
     end
-  end
+end
 
-  describe 'ログイン状態保持' do
+describe 'ログイン状態保持' do
     it "ユーザがチェックを入れた時にクッキーが記憶されているか" do
       log_in_as(user)
       expect(cookies[:remember_token]).not_to eq nil

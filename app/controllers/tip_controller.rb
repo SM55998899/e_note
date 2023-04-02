@@ -1,10 +1,10 @@
 class TipController < ApplicationController
-  before_action :set_tip, only: %i(show edit update destroy)
+  before_action :set_tip, only: %i[show edit update destroy]
 
 	def new
     @tip = Tip.new
     @list = List.find_by(id: params[:list_id])
-  end
+ end
 
 	def create
     @tip = Tip.new(tip_params)
@@ -13,11 +13,11 @@ class TipController < ApplicationController
     else
       render action: :new
     end
-  end
-  
+ end
+
 	def edit
     @lists = List.where(user: current_user)
-  end
+ end
 
 	def update
     if @tip.update(tip_params)
@@ -25,14 +25,15 @@ class TipController < ApplicationController
     else
       render action: :edit
     end
-  end
+ end
 
 	def destroy
     @tip.destroy
     redirect_to todolist_path
-  end
+ end
 
   private
+
     def tip_params
       params.require(:tip).permit(:title, :memo, :list_id)
     end
