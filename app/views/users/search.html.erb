@@ -1,0 +1,22 @@
+<div class="userIndex">
+<h2>検索結果 "<%= @keyword %>"</h2>
+  <ul class="left">
+  <h1>単語</h1>
+    <% @cards.each do |c| %>
+      <li class="card">
+        <%= c.front %>
+				<%= c.back %>
+      </li>
+    <% end %>
+  </ul>
+	<ul class="right">
+  <h1>日記</h1>
+	<% @microposts.each do |c| %>
+    <li id="c-<%= c.id %>" class="micropost">
+    <%= link_to(micropost_path(c)) do %>
+      <%= truncate(strip_tags(c.content), length: 60) %>
+      <% end %>
+    </li>
+  <% end %>
+	</ul>
+  </div>

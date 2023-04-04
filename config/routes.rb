@@ -11,7 +11,13 @@ Rails.application.routes.draw do
   post   "/login",   to: "sessions#create"
   delete "/logout",  to: "sessions#destroy"
   get "/diary", to: "static_pages#diary"
-  resources :users
+
+  resources :users do
+    collection do
+      get 'search'
+    end
+  end
+  
   resources :microposts,          only: %i(create destroy show)
   resources :cards,               only: %i(create destroy) do
     resources :likes, only: %i(create destroy index)

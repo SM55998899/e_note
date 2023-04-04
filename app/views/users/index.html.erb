@@ -1,14 +1,39 @@
-<ul>
-  <% @cards.each do |c| %>
-    <li id="c-<%= c.id %>">
-      <%= c.front %>
-      <%= c.back %>
-    </li>
+
+<%= form_with url: search_users_path, local: true, method: :get, html: { class: "search-form" } do |form| %>
+    <h1>さくいん</h1>
+    <h2>自分の作った単語、日記を調べよう</h2>
+    <%= form.text_field :keyword %>
+    <%= form.submit "検索する", class: "btn" %>
   <% end %>
-  <%= will_paginate @cards,
-  params: {
-    controller: :users,
-    action: :index
-  },
-  class: "my-pagination-class" %>
-</ul>
+<div class="userIndex">
+  <ul class="left">
+  <h1>単語</h1>
+    <% @cards.each do |c| %>
+      <li id="c-<%= c.id %>", class="card">
+        <%= c.front %>&nbsp;:&nbsp;
+        <%= c.back%>
+      </li>
+    <% end %>
+    <%= will_paginate @cards,
+    params: {
+      controller: :users,
+      action: :index
+    },
+    class: "my-pagination-class" %>
+  </ul>
+  
+  <ul class="right">
+  <h1>日記</h1>
+    <% @microposts.each do |c| %>
+      <li id="c-<%= c.id %>" class="micropost">
+        <%= truncate(strip_tags(c.content), length: 60) %>
+      </li>
+    <% end %>
+    <%= will_paginate @microposts,
+    params: {
+      controller: :users,
+      action: :index
+    },
+    class: "my-pagination-class" %>
+  </ul>
+</div>

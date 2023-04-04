@@ -1,48 +1,48 @@
-  <div class="l-kingdom">
-    <div class="todotext">
-      <h1>予定を作ろう！</h1>
-      <h3>有意義な1日を過ごすための計画</h3>
-    </div>
-    <% unless @lists.present?%>
+<div class="l-kingdom">
+  <div class="todotext">
+    <h1>予定を作ろう！</h1>
+    <h3>有意義な1日を過ごすための計画</h3>
+  </div>
+  <% unless @lists.present? %>
     <h3 class="no">予定がまだありません。立ててみよう！</h3>
-    <%end%>
-    <%= link_to "＋ リストを作成する", new_list_path, class: "pluslist" %>
-    <div class="l-contents">
-      <% @lists.each do |list| %>
-        <div class="list">
-          <div class="list_header">
-            <h2 class="list_header_title"><%= list.title %></h2>
-            <%= link_to(edit_list_path(list)) do %>
-              <%= image_tag("edit.png", alt: "編集する", class: "list-icon") %>
-            <% end %>
-            <%= link_to list,
+  <% end %>
+  <%= link_to "＋ リストを作成する", new_list_path, class: "pluslist" %>
+  <div class="l-contents">
+    <% @lists.each do |list| %>
+      <div class="list">
+        <div class="list_header">
+          <h2 class="list_header_title"><%= list.title %></h2>
+          <%= link_to(edit_list_path(list)) do %>
+            <%= image_tag("edit.png", alt: "編集する", class: "list-icon") %>
+          <% end %>
+          <%= link_to list,
             data: {
               "turbo-method": :delete,
               turbo_confirm: "この「リスト」を削除しますが本当によろしいですか？                  (中にあるカードも消えます)"
             } do %>
-              <%= image_tag("trash.png", alt: "削除する", class: "list-icon trash") %>
-            <% end %>
-          </div>
-
-          <% list.tips.each do |tip| %>
-            <%= link_to edit_list_tip_path(list, tip), class:"cardDetail_link" do %>
-              <div class="tip">
-                <h3 class="tip-title"><%= tip.title %></h3>
-                <%= link_to "削除",
-                list_tip_path(list, tip),
-                class: "btn delete",
-                data: {
-                  "turbo-method": :delete,
-                  turbo_confirm: "このカードを削除しますが、よろしいでしょうか？"
-                } %>
-              </div>
-            <% end %>
-          <% end %>
-
-          <%= link_to new_list_tip_path(list), class: "addCard_link" do %>
-            <%= image_tag("plus.png", alt: "カードを追加する", class: "list-icon plus") %>
+            <%= image_tag("trash.png", alt: "削除する", class: "list-icon trash") %>
           <% end %>
         </div>
-      <% end %>
-    </div>
+
+        <% list.tips.each do |tip| %>
+          <%= link_to edit_list_tip_path(list, tip), class:"cardDetail_link" do %>
+            <div class="tip">
+              <h3 class="tip-title"><%= tip.title %></h3>
+              <%= link_to "削除",
+              list_tip_path(list, tip),
+              class: "btn delete",
+              data: {
+                "turbo-method": :delete,
+                turbo_confirm: "このカードを削除しますが、よろしいでしょうか？"
+              } %>
+            </div>
+          <% end %>
+        <% end %>
+
+        <%= link_to new_list_tip_path(list), class: "addCard_link" do %>
+          <%= image_tag("plus.png", alt: "カードを追加する", class: "list-icon plus") %>
+        <% end %>
+      </div>
+    <% end %>
   </div>
+</div>

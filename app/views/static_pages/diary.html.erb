@@ -1,15 +1,15 @@
-  <div class="d-contents">
-    <section class="diary-form">
-      <h1>日記をつける</h1>
-      <h3>未来の自分へできること</h3>
-      <%= render "shared/micropost_form" %>
-    </section>
+<div class="d-contents">
+  <section class="diary-form">
+    <h1>日記をつける</h1>
+    <h3>未来の自分へできること</h3>
+    <%= render "shared/micropost_form" %>
+  </section>
 
-    <div class="diary-feed">
-      <h2>日記一覧</h2>
-      <% unless @feed_items.present? %>
+  <div class="diary-feed">
+    <h2>日記一覧</h2>
+    <% unless @feed_items.present? %>
       <h3 class="no">日記がまだありません。書いてみましょう！</h3>
-      <% end %>
-      <%= render "shared/feed" %>
-    </div>
+    <% end %>
+    <%= render "shared/feed" %>
   </div>
+</div>

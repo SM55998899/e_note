@@ -38,8 +38,20 @@ class UsersController < ApplicationController
 
   def index
     @user = current_user
-    @cards = @user.cards.paginate(page: params[:page], per_page: 10)
-    @microposts = @user.microposts.paginate(page: params[:page], per_page: 10)
+    @cards = @user.cards.paginate(page: params[:page], per_page: 20)
+    @microposts = @user.microposts.paginate(page: params[:page], per_page: 20)
+  end
+
+  def search
+    @user = current_user
+    if params[:keyword].present?
+      @cards = @user.cards.where('front LIKE ? OR back LIKE ?', "%#{params[:keyword]}%", "%#{params[:keyword]}%")
+      @microposts = @user.microposts.where('content LIKE ?', "%#{params[:keyword]}%")
+      @keyword = params[:keyword]
+    else
+      @cards = @user.cards
+      @microposts = @user.microposts
+    end
   end
 
   private
