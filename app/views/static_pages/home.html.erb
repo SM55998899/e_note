@@ -74,7 +74,7 @@
     <li><%= link_to "よくある質問", "#" %></li>
     <li><%= link_to "利用規約", "#" %></li>
     <% if logged_in? %>
-      <li><%= link_to new_contact_path( user_id: current_user.id ) do %>
+      <li><%= link_to new_contact_path do %>
           お問い合わせ
         <% end %></li>
     <% end %>

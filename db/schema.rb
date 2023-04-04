@@ -22,10 +22,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_25_010627) do
   end
 
   create_table "contacts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
     t.string "name", null: false
     t.text "content", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_contacts_on_user_id"
   end
 
   create_table "likes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -79,6 +81,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_25_010627) do
   end
 
   add_foreign_key "cards", "users"
+  add_foreign_key "contacts", "users"
   add_foreign_key "likes", "cards"
   add_foreign_key "likes", "users"
   add_foreign_key "lists", "users"

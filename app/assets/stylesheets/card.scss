@@ -22,6 +22,13 @@
 		padding: 0 15px;
 		float: right;
 
+		.no {
+			width: 300px;
+			h3 {
+				margin: 10px 0 0 0;
+			}
+		}
+
 		.fc-head {
 			display: flex;
 			height: 46px;
@@ -97,6 +104,10 @@
 						width: 35px;
 						height: 35px;
 
+						&:hover {
+							opacity: 0.6;
+						}
+
 
 						.bk {
 							border: none;
@@ -120,6 +131,10 @@
 					width: 17px;
 					height: 17px;
 					margin-top: 7px;
+
+					&:hover {
+						opacity: 0.6;
+					}
 
 					.bk {
 						border: none;

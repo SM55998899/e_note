@@ -46,7 +46,7 @@ RSpec.describe "Users", type: :request do
     end
   end
 
-  describe "ログイン時の他ユーザーへの編集" do
+  describe "ログイン時の他ユーザーページへの侵入" do
     let(:user) { FactoryBot.create(:user) }
     let(:other_user) { FactoryBot.create(:user) }
 
@@ -62,6 +62,11 @@ RSpec.describe "Users", type: :request do
         name: user.name,
         eemail: user.email,
       } }
+      expect(response).to redirect_to root_path
+    end
+
+    it "ログインして他のユーザプロフィールを覗こうとした時、失敗するか" do
+      get user_path(user)
       expect(response).to redirect_to root_path
     end
   end

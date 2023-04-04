@@ -1,4 +1,5 @@
 class TipController < ApplicationController
+  before_action :logged_in_user
   before_action :set_tip, only: %i[show edit update destroy]
 
 	def new
@@ -41,4 +42,13 @@ class TipController < ApplicationController
 		def set_tip
       @tip = Tip.find_by(id: params[:id])
     end
+
+    # ログイン済みユーザーかどうか確認
+  def logged_in_user
+    unless logged_in?
+      store_location
+      flash[:danger] = "この機能を使うにはログインが必要です。"
+      redirect_to login_url, status: :see_other
+    end
+  end
 end

@@ -1,5 +1,3 @@
-<% if logged_in? %>
-
   <div class="d-contents">
     <section class="diary-form">
       <h1>日記をつける</h1>
@@ -9,9 +7,9 @@
 
     <div class="diary-feed">
       <h2>日記一覧</h2>
+      <% unless @feed_items.present? %>
+      <h3 class="no">日記がまだありません。書いてみましょう！</h3>
+      <% end %>
       <%= render "shared/feed" %>
     </div>
   </div>
-<% else %>
-  <%= render "shared/urge" %>
-<% end %>
