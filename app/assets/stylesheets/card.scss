@@ -1,11 +1,15 @@
+@mixin backGround {
+	  border-radius: 8px;
+		background-color: #2bcaa2;
+		padding: 0 15px;
+}
+
 #card-contents {
 	margin-left: 150px;
 
 
 	.makecard {
-		border-radius: 8px;
-		background-color: #2bcaa2;
-		padding: 0 15px;
+    @include backGround;
 		float: left;
 
 		h2,
@@ -16,10 +20,8 @@
 	}
 
 	.feedcard {
+		@include backGround;
 		margin-left: 25px;
-		border-radius: 8px;
-		background-color: #2bcaa2;
-		padding: 0 15px;
 		float: right;
 
 		.no {
@@ -152,7 +154,4 @@
 	}
 }
 
-.btn {
-	font-size: 18px;
-	font-weight: bold;
-}
+

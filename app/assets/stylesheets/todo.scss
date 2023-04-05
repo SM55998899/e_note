@@ -1,3 +1,5 @@
+@import 'mixin';
+
 .todotext {
 	display: flex;
 	font-weight: bold;
@@ -13,16 +15,13 @@
 
 
 .l-kingdom {
-	background-color: #2bcaa2;
+	@include bgDefault;
 	width: 1100px;
 	padding: 20px;
-	border-radius: 10px;
 
 	.no {
-		color: white;
 		margin: 0 0 15px 0;
-		font-family: sans-serif;
-		font-weight: bold;
+
 	}
 }
 
@@ -100,13 +99,10 @@
 		}
 
 		.list_header_title {
-			background-color: #2bcaa2;
+			@include bgDefault;
 			text-align: center;
-			color: white;
 			font-size: 1.1rem;
-			font-family: sans-serif;
 			margin: 0;
-			border-radius: 5px;
 			padding: 2px;
 			margin-bottom: 10px;
 		}

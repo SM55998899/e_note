@@ -1,6 +1,6 @@
 <% provide(:title, "Forgot password") %>
 <div class="fm-contents">
-  <h1 class="pr-title">Forgot password</h1>
+  <h2 class="pr-title">ご記入いただいたメールアドレスにリセットメールをお送りします</h2>
   <div class="f-mail-form">
     <%= form_with(url: password_resets_path, scope: :password_reset) do |f| %>
       <%= f.label :email %>

@@ -1,6 +1,4 @@
-@mixin base {
-	background-color: rgb(43, 202, 162);
-}
+@import 'mixin';
 
 #contents {
 	display: flex;
@@ -8,12 +6,9 @@
 }
 
 #menu {
-	font-weight: bold;
-	font-family: sans-serif;
+	@include bgDefault;
 	padding: 30px 20px;
 	margin-left: 80px;
-	background-color: rgb(43, 202, 162);
-	border-radius: 10px;
 	display: flex;
 
 	.ah {
@@ -68,19 +63,15 @@
 
 
 #account {
+	@include bgDefault;
 	width: 400px;
 	display: block;
 	font-size: 1.6rem;
-	font-weight: bold;
-	font-family: sans-serif;
 	padding: 0;
-	background-color: rgb(43, 202, 162);
 	margin-left: 80px;
 	margin-bottom: 20px;
-	border-radius: 10px;
 
 	h5 {
-		color: white;
 		margin: 10px 0 0 30px;
 		font-size: 1.1rem;
 		display: inline-block;
@@ -240,8 +231,7 @@
 
 /* footer */
 #footer {
-	@include base;
-	font-family: sans-serif;
+	@include bgDefault;
 	padding: 3px;
 	flex-wrap: nowrap;
 	width: 100%;
@@ -262,7 +252,6 @@
 			a {
 				color: white;
 				font-size: 1.2rem;
-				font-weight: bold;
 			}
 		}
 	}

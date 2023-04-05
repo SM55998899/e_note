@@ -1,0 +1,13 @@
+@mixin bgDefault {
+	background-color: #2bcaa2;
+	border-radius: 7px;
+	color: white;
+	font-family: sans-serif;
+	font-weight: bold;
+}
+
+@mixin bg {
+	background-color: #2bcaa2;
+	border-radius: 7px;
+	padding: 5px;
+}

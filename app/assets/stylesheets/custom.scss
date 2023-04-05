@@ -14,36 +14,6 @@ body {
 	background-color: rgb(43, 202, 162);
 }
 
-#search_form {
-	display: inline-block;
-	border-radius: 10px;
-	background-color: rgb(43, 202, 162);
-	margin-top: 10px;
-	margin-left: 100px;
-	padding: 20px 40px 20px 20px;
-
-	.search_btn {
-		//display: inline-block;
-		padding: 40px;
-		cursor: pointer;
-		font-size: 300%;
-		color: rgb(43, 202, 162);
-		width: 40px;
-	}
-
-	.text-form {
-		font-size: 1.4rem;
-		font-family: sans-serif;
-		font-weight: bold;
-		height: 40px;
-		width: 600px;
-	}
-}
-
-
-
-
-
 /* miscellaneous */
 
 .debug_dump {

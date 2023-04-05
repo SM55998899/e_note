@@ -1,12 +1,11 @@
+@import 'mixin';
+
 .pe-contents {
-	font-family: sans-serif;
-	font-weight: bold;
+  @include bgDefault;
 	margin-left: 300px;
-	border-radius: 7px;
 	width: 450px;
 	padding: 10px;
-	color: white;
-	background-color: #2bcaa2;
+
 
 	.form-control {
 		font-size: 1.3rem;

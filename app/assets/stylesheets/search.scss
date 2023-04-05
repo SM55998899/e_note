@@ -1,10 +1,8 @@
+@import 'mixin';
+
 .search-form {
-	background: #2bcaa2;
+	@include bgDefault;
 	padding: 10px;
-	border-radius: 7px;
-	color: white;
-	font-weight: bold;
-	font-family: sans-serif;
 
 	h1,h2 {
 		margin: 0;
@@ -23,12 +21,8 @@
 
 .userIndex {
 	h2 {
-		background: #2bcaa2;
-		color: white;
-		font-weight: bold;
-		font-family: sans-serif;
+		@include bgDefault;
 		padding: 6px;
-		border-radius: 7px;
 	}
 
 	.left {
@@ -40,16 +34,12 @@
 	}
 
 	ul {
+		@include bgDefault;
     h1 {
-			color: white;
-	    font-weight: bold;
-	    font-family: sans-serif;
 			margin: 0;
 		}
 
 		width: 350px;
-		background-color: #2bcaa2;
-		border-radius: 7px;
 		padding: 23px;
 		margin-left: 50px;
 
