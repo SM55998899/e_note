@@ -50,7 +50,7 @@ select,
 }
 
 .row {
-	margin: 24px 0px 0 100px;
+	margin: 24px 0px 0 5vw;
 	display: inline-block;
 
 	.btn-primary {
@@ -95,4 +95,16 @@ input {
 #session_remember_me {
 	width: auto;
 	margin-left: 0;
+}
+
+@media screen and (min-width: 481px) and (max-width:1024px) {
+	.row {
+		margin: 24px 0px 0 0px;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.row {
+		margin: 24px 0px 0 0px;
+	}
 }

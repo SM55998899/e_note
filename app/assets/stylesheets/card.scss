@@ -5,7 +5,7 @@
 }
 
 #card-contents {
-	margin-left: 150px;
+	margin-left: 10vw;
 
 
 	.makecard {
@@ -154,4 +154,12 @@
 	}
 }
 
+@media screen and (min-width: 481px) and (max-width:1024px) {
+	#card-contents {
+		margin-left: 1vw;
 
+		.feedcard {
+			margin-left: 1vw;
+		}
+	}
+}

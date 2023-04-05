@@ -144,3 +144,20 @@
 		font-weight: bold;
 	}
 }
+
+@media screen and (min-width: 481px) and (max-width:1024px) {
+	.diary-form {
+		float: none;
+		width: 500px;
+		margin-left: 10vw;
+
+		.diaryForm {
+			height: 200px;
+		}
+	}
+
+	.diary-feed {
+		margin-top: 20px;
+		margin-left: 10vw;
+	}
+}

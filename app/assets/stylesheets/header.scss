@@ -17,7 +17,7 @@ header {
 		color: white;
 		margin-top: 13px;
 		margin-left: 130px;
-		margin-right: 620px
+		margin-right: 45vw;
 	}
 
 	.navbar {
@@ -115,4 +115,29 @@ header {
 	}
 
 
+}
+
+@media screen and (min-width: 481px) and (max-width:1024px) {
+  header {
+		.logo {
+			margin-right: 10vw;
+		}
+	}
+}
+
+@media screen and (max-width: 480px) {
+	header {
+		.logo {
+			margin-left: 15px;
+		margin-right: 5px;
+		}
+	}
+
+	.login-header {
+    padding: 0;
+		.home {
+			display: none;
+		}
+
+	}
 }

@@ -16,7 +16,7 @@
 
 .l-kingdom {
 	@include bgDefault;
-	width: 1100px;
+	max-width: 1100px;
 	padding: 20px;
 
 	.no {
@@ -120,4 +120,8 @@
 			height: 23px;
 		}
 	}
+}
+
+@media screen and (min-width: 481px) and (max-width:1024px) {
+	
 }

@@ -39,7 +39,7 @@ class UsersController < ApplicationController
   def index
     @user = current_user
     @cards = @user.cards.paginate(page: params[:page], per_page: 20)
-    @microposts = @user.microposts.paginate(page: params[:page], per_page: 20)
+    @microposts = @user.microposts.paginate(page: params[:page], per_page: 10)
   end
 
   def search
