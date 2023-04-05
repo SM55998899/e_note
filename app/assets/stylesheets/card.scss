@@ -163,3 +163,41 @@
 		}
 	}
 }
+
+@media screen and (max-width: 480px) {
+	#card-contents {
+		margin: 0;
+
+		.makecard {
+			float: none;
+			h2,h3 {
+				margin: 3px;
+			}
+		}
+
+		
+		#card_front {
+			height: 50px;
+		}
+
+		#card_back {
+			height: 100px;
+		}
+
+		.feedcard {
+			float: none;
+			margin-top: 20px;
+			margin-left: 0px;
+			padding: 0 1px;
+
+			#card-feed {
+				.cc {
+					font-size: 0.8rem;
+				}
+			}
+		}
+
+
+
+	}
+}
