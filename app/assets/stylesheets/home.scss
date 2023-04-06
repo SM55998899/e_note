@@ -270,6 +270,18 @@
 }
 
 @media screen and (max-width: 480px) {
+
+	header {
+		.navbar {
+			ul {
+				li {
+					a {
+						font-size: 1rem;
+					}
+				}
+			}
+		}
+	}
 	.c-right {
 		display: none;
 	}
@@ -282,6 +294,14 @@
 		width: 100vw;
 		h4 {
 			font-size: 1.0rem;
+		}
+
+		ul {
+			li {
+				a {
+					font-size: 1.2rem;
+				}
+			}
 		}
 	}
 

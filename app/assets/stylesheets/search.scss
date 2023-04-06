@@ -19,7 +19,7 @@
 	}
 }
 
-.userIndex {
+.userIndex, .userIndex2 {
 	h2 {
 		@include bgDefault;
 		padding: 6px;
@@ -68,6 +68,20 @@
 		ul {
 			margin-left:0.02vw;
 			padding: 20px 2vw;
+		}
+	}
+}
+
+@media screen and (max-width: 480px) {
+  .userIndex {
+		display: none;
+	}
+
+	.userIndex2 {
+		.left, .right {
+			margin-left: 0;
+			padding: 5px;
+			float:none;
 		}
 	}
 }

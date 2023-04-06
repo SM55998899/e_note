@@ -161,3 +161,23 @@
 		margin-left: 10vw;
 	}
 }
+
+@media screen and (max-width: 480px) {
+  .diary-form {
+		float: none;
+	}
+
+	.diary-feed {
+		margin-top: 10px;
+		margin-left: 0;
+		width: 96%;
+
+		.d-feed-p {
+			.d-feed-dt {
+				.delete {
+					right: 50px;
+				}
+			}
+		}
+	}
+}

@@ -20,3 +20,13 @@
 		border-radius: 6px;
 	}
 }
+
+@media screen and (max-width: 480px) {
+	.tipnewForm,
+.tipeditForm {
+	margin-left: 1%;
+  width: 97%;
+}
+
+ 
+}
