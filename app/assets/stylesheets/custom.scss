@@ -66,17 +66,19 @@ input {
 /* error */
 
 #error_explanation {
-	color: red;
+	color: rgb(255, 114, 137);
+	background: white;
+	border-radius: 7px;
 
 	ul {
-		color: red;
+		color: rgb(255, 114, 137);
 		margin: 0 0 30px 0;
 	}
 }
 
 .field_with_errors {
 	.form-control {
-		color: red;
+		color: rgb(255, 114, 137);
 	}
 }
 

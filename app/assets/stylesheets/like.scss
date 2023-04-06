@@ -58,3 +58,23 @@
 		margin-left: 20px;
 	}
 }
+
+@media screen and (max-width: 480px) {
+	.likeIndex {
+		width: 96%;
+
+		.text {
+			display: block;
+			width: auto;
+			h1 {
+				font-size: 1.6rem;
+			}
+
+			h2 {}
+		}
+
+		.card1{
+			height:auto;
+		}
+	}
+}

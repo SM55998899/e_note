@@ -22,3 +22,10 @@ ja:
       x_years:
         one: "1年前"
         other: "%{count}年前"
+
+  activerecord:
+    attributes:
+      user:
+        name: "名前"
+        password: "パスワード"
+        email: "メールアドレス"
