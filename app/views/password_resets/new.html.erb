@@ -1,12 +1,12 @@
 <% provide(:title, "Forgot password") %>
 <div class="fm-contents">
-  <h2 class="pr-title">ご記入いただいたメールアドレスにリセットメールをお送りします</h2>
+  <h2 class="pr-title">e-noteにご登録頂いたメールアドレスにリセットメールをお送りします</h2>
   <div class="f-mail-form">
     <%= form_with(url: password_resets_path, scope: :password_reset) do |f| %>
       <%= f.label :email %>
       <%= f.email_field :email, class: "form-control" %>
 
-      <%= f.submit "Submit", class: "btn btn-primary" %>
+      <%= f.submit "送信する", class: "btn btn-primary" %>
     <% end %>
   </div>
 </div>

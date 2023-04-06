@@ -6,3 +6,10 @@
 	width: 450px;
 	padding: 10px;
 }
+
+@media screen and (max-width: 480px) {
+	.fm-contents {
+		width: 94%;
+		margin-left: 0;
+  }
+}
