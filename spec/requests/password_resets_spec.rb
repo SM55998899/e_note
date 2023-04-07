@@ -179,7 +179,7 @@ RSpec.describe "パスワード再設定の統合テスト", type: :request do
 		user: { password: "newPassword", password_confirmation: "newPassword" }
 	  }
 	  follow_redirect!
-	  expect(response.body).to include "Password reset has expired"
+	  expect(response.body).to include "パスワードリセットは期限切れです。やり直して下さい。"
 	end
 
 	it "再設定ページに飛ばされる事" do
