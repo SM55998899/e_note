@@ -16,11 +16,11 @@
       <div class="dg">
         <div class="good">
           <% if current_user.already_liked?(card) %>
-            <%= button_to card_like_path(card, id: card.id), class: "button_to-btn", method: :delete do %>
+            <%= button_to card_like_path(card, id: card.id), class: "button_to-btn", method: :delete, id: "nolike-btn" do %>
               <%= image_submit_tag("star-solid.svg", class: "bk") %>
             <% end %>
           <% else %>
-            <%= button_to card_likes_path(card), class: "button_to-btn" do %>
+            <%= button_to card_likes_path(card), class: "button_to-btn", id: "liking-btn" do %>
               <%= image_submit_tag("star-regular.svg", class: "bk") %>
             <% end %>
           <% end %>

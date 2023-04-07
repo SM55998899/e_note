@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :like do
-    card { nil }
-    user { nil }
+    association :card
+    user { card.user }
   end
 end

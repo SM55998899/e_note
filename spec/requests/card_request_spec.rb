@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe "単語機能", type: :request do
 	let(:user) { FactoryBot.create(:user) }
 
-  	describe "カード作成時"do
+  	describe "カード作成について"do
   	  let(:card) { FactoryBot.attributes_for(:card) }
   	  let(:post_request) { post cards_path, params: { card: card } }
   
