@@ -11,7 +11,7 @@ FactoryBot.define do
 		admin { true }
 	  end
   
-  # 新しく追加します。
+  # 有効化しない場合
 	  trait :no_activated do
 		activated { false }
 		activated_at { nil }

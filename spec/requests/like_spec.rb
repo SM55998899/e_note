@@ -20,5 +20,4 @@ RSpec.describe "マーク（いいね）機能について", type: :request do
 		end
   end
  end
- end
 end

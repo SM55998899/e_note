@@ -12,13 +12,14 @@ RSpec.describe "単語機能", type: :request do
 		  		log_in_as(user)
   	  		expect { post_request }.to change(Card, :count).by(1)
          end
-  	end
+			end
 
-		context "非ログイン時" do
-			it "投稿数が変わらない" do
-        expect { post_request }.to change(Card, :count).by(0)
-      end
-		end
+		  context "非ログイン時" do
+		  	it "投稿数が変わらない" do
+          expect { post_request }.to change(Card, :count).by(0)
+        end
+		  end
+    end
 
 		describe "単語削除時" do
 			let!(:card) { FactoryBot.create(:card, user: user) }
@@ -49,5 +50,4 @@ RSpec.describe "単語機能", type: :request do
 				end
 			end
 		end
-  end
 end

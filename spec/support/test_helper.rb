@@ -11,6 +11,15 @@ module SystemHelper
 	  fill_in 'session[password]', with: user.password
 	  click_button 'ログインする'
 	end
+
+	def registCard(front, back)
+    visit regist_path
+
+		fill_in 'card_front', with: front
+		fill_in 'card_back', with: front
+
+		click_button "単語を作成"
+	end
 end
   RSpec.configure do |config|
 	config.include TestHelper

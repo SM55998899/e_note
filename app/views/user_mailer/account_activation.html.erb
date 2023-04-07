@@ -1,5 +1,4 @@
 <h1>e-noteアカウント有効化メール</h1>
-
 <p>
   <%= @user.name %>様,アカウント登録をして頂き、誠にありがとうございます。</p>
 
@@ -7,6 +6,5 @@
   以下のリンクをクリックしていただきますと、アカウント有効化が完了となります。
   今後とも、e-noteをよろしくお願いいたします。
 </p>
-
 <%= link_to "アカウントを有効化する",
 edit_account_activation_url(@user.activation_token, email: @user.email) %>
