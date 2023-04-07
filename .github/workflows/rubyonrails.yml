@@ -12,13 +12,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Install Docker
+        uses: docker/setup-docker@v1
       - uses: actions/checkout@v2
       - name: Set up Ruby 3.2.0
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.2.0
+      - name: Install Docker Compose
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y docker-compose
       - name: Test with Rspec
         run: |
           gem install bundler
-          bundle install
-          bundle exec rspec
+          docker-compose build
+          docker-compose up -d
+          docker-compose exec web bundle install
+          docker-compose exec web bundle exec rspec

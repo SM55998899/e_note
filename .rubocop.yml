@@ -2,13 +2,13 @@ inherit_from: .rubocop_todo.yml
 # 自動生成されたファイルを対象外にする
 AllCops:
   Exclude:
-    - 'Gemfile'
-    - 'node_modules/**/*'
-    - 'bin/*'
-    - 'db/**/*'
-    - 'config/**/*'
-    - 'test/**/*'
-    - 'spec/**/*'
+    - "Gemfile"
+    - "node_modules/**/*"
+    - "bin/*"
+    - "db/**/*"
+    - "config/**/*"
+    - "test/**/*"
+    - "spec/**/*"
 
 # 以下を追記
 Style/FrozenStringLiteralComment:
