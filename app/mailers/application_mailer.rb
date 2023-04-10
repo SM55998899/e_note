@@ -1,4 +1,7 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "user@realdomain.com"
+  require 'dotenv'
+  Dotenv.load
+
+  default from: ENV['SENDER_ADDRESS']
   layout "mailer"
 end
