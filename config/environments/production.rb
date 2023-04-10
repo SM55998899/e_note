@@ -54,7 +54,7 @@ Rails.application.configure do
   config.force_ssl = false
   config.ssl_options = { hsts: { subdomains: true } }
 
-  config.action_mailer.default_url_options = { host: 'sakaiminoru.com'}
+  config.action_mailer.default_url_options = { host: 'https://sakaiminoru.com'}
 
   # Include generic and useful information about system operation, but avoid logging too much
   # information to avoid inadvertent exposure of personally identifiable information (PII).
