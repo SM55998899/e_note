@@ -105,8 +105,8 @@ Rails.application.configure do
   :address => "smtp.gmail.com",
   :port => 587,
   :domain => 'smtp.gmail.com',
-  :user_name => ENV['GMAIL_ADDRESS'],
-  :password => ENV['GMAIL_PASSWORD'],
+  :user_name => ENV['ACTION_MAILER_USER'],
+  :password => ENV['ACTION_MAILER_KEY'],
   :authentication => 'login',
   :openssl_verify_mode  => 'none'
 }
