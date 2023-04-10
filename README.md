@@ -4,6 +4,18 @@ e-note は皆様の勉強生活をより良いものにするために作られ�
 単語帳、予定表、日記を作り、自由にカスタマイズすることができます。
 日々の生産性を向上することが可能です。
 
+# 何ができるか
+
+<h2>単語帳機能</h2>
+ 自分で単語を作り、勉強に役立てることができます。
+
+<h2>予定表機能</h2>
+ 1日の予定を数種類作成し、カードのように並べることができます。
+ 生産性向上にお役立てください。
+
+<h2>日記機能</h2>
+1日をまとめて振り返り、明日に備えることができます。
+
 # 組み込んだ機能
 
 <h2>ユーザー関連</h2>
@@ -33,6 +45,8 @@ e-note は皆様の勉強生活をより良いものにするために作られ�
 お問い合わせ機能
 
 <h2>開発に使用した技術</h2>
+Rails7
+Ruby3.2.0
 RSpec<br>
 Rubocop<br>
 will_paginate<br>
@@ -40,26 +54,27 @@ Vscode
 
 <h2>インフラに使用した技術</h2>
 Docker, Docker-compose<br>
-AWS(EC2,RDS,VPC)<br>
-GithubActions<br>
+AWS(EC2,RDS,VPC,Route53)<br>
 puma<br>
 nginx
+
+# インフラ構成図
+
+<img width="593" alt="スクリーンショット 2023-04-10 17 41 16" src="https://user-images.githubusercontent.com/114633368/230866522-e4c61180-cdd2-4383-a1ad-b216464730fa.png">
 
 # 今後、スキルが上がった際に組み込みたい機能
 
 日記の編集機能<br>
+Github Actions を導入し、CDCI パイプラインを構築する<br>
 react を導入し、モダンな SPA にする<br>
 作成した単語でクイズをする機能<br>
 忘却曲線に基づいて、忘れてそうな単語をピックアップしてクイズにする機能<br>
 ダークモードの導入<br>
 日記帳を、Qiita の投稿フォームのように、コードや画像を貼れるものにする<br>
 
-開発言語: Ruby3.2.0
-
-使用フレームワーク: Ruby on Rails7
-
-<h2></h2>
-
-ローカルでの起動方法: ターミナル上に[bundle exec rails s -b 0.0.0.0]と入力して実行(Docker 導入後だと起動できない可能性がある)
-
-Docker を使った起動方法: ターミナル上で[docker start 'app、db それぞれのコンテナ番号']を入力して実行
+<h2>ローカルでの起動方法</h2>
+①docker-composeをbuild, upする<br>
+②localhost:3000で接続する<br>
+注意点:メイラー機能をローカルで使用する場合はgmailアカウントが必要です。<br>
+.envファイルを作成して、ACTION_MAILER_USER, ACTION_MAILER_KEYに、<br>
+それぞれ自分のgmailアドレス、gmailアプリパスワード(16桁のもの)を入力する。
