@@ -1,20 +1,20 @@
 # メインのサンプルユーザーを1人作成する
 User.create!(name:  "takuya",
-	email: "takuya@gmail.com",
+	email: "takuya@example.com",
 	password:              "takuya",
 	password_confirmation: "takuya",
 	activated: true,
 	activated_at: Time.zone.now)
 
 User.create!(name:  "takuma",
-	email: "takuma@gmail.com",
+	email: "takuma@example.com",
 	password:              "takuma",
 	password_confirmation: "takuma",
 	activated: true,
 	activated_at: Time.zone.now)
 
 User.create!(name:  "takuto",
-	email: "takuto@gmail.com",
+	email: "takuto@example.com",
 	password:              "takuto",
 	password_confirmation: "takuto",
 	activated: true,
